@@ -1,0 +1,19 @@
+{
+  "name": "plugin_templates",
+  "version": "1.0.0",
+  "description": "This document contains instruction on how to create plugins for BizConsole. This directory also contain templates for different types of Plugin.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.2",
+    "globals": "^15.3.0",
+    "prettier": "3.3.1",
+    "typescript-eslint": "^7.12.0"
+  }
+}
