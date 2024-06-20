@@ -1,6 +1,10 @@
-# Dashboard Widget Plugin Template - Weather Widget
-This project contains an example of creating plugins of type dashboard widget. There are many types of dashboard widgets. There are widgets
-that display static data and do not require making API calls. There are widgets that display dynamic data such as metrics, logs, alerts,
-etc... which require making API calls to MODE's backend to fetch data. And there are widgets that display dynamic data and require making API
-calls but to external server instead of MODE backend. This project contains example of a widget that display external data.
+# Page and Component Plugin Template - My Account Components
+This project contains an example of creating plugins of type component. Components are just React components. What it does and how it is
+implemented depends on the project requirements.
 
+Just for the purpose of demonstrating how to implement component plugins, this example project will implement a couple of components to
+replace the BizConsole's Personal Info component.
+
+Let's assume we don't like the BizConsole's Personal Info component that are displayed in the My Account page. We want to separate the
+user's personal info and user preference as 2 different components. Therefore, we created this plugin that implements 2 components to
+display the logged in user's info and preference.
