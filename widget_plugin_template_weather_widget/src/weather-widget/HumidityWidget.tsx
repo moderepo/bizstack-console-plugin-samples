@@ -15,7 +15,7 @@ import {
     RequestMethod,
     TypeNotReady,
 } from '@moderepo/biz-console';
-import { HumidityWidgetCustomSettings,  createInitialHumidityWidgetCustomSettings } from './models';
+import { HumidityWidgetCustomSettings, createInitialHumidityWidgetCustomSettings } from './models';
 import { HUMIDITY_API_URL } from './utils';
 
 export interface HumidityWidgetProps extends EntityViewComp {
@@ -50,7 +50,7 @@ export const HumidityWidget = React.forwardRef<DataConsumer, HumidityWidgetProps
         if (!(response instanceof APIError)) {
             const humidity = response.data.current.relative_humidity_2m;
             if (typeof humidity === 'number') {
-                    setHumidity(humidity);
+                setHumidity(humidity);
             } else {
                 setHumidity(undefined);
             }
@@ -101,15 +101,7 @@ export const HumidityWidget = React.forwardRef<DataConsumer, HumidityWidgetProps
     return (
         <StyledWeatherWidget.Root id={id} className={className} style={style} sx={combinedStyle}>
             <StyledWeatherWidget.Title>{customSettings.title}</StyledWeatherWidget.Title>
-            <StyledWeatherWidget.Value>
-                {humidity !== undefined ? (
-                    <>
-                        {humidity.toFixed(1)}%
-                    </>
-                ) : (
-                    <>Unknown</>
-                )}
-            </StyledWeatherWidget.Value>
+            <StyledWeatherWidget.Value>{humidity !== undefined ? <>{humidity.toFixed(1)}%</> : <>Unknown</>}</StyledWeatherWidget.Value>
         </StyledWeatherWidget.Root>
     );
 });
