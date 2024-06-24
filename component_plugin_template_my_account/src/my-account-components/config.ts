@@ -1,4 +1,4 @@
-import { BizConsoleComponentPlugin, BizConsolePluginType, BizConsolePluginPack, IconSource } from '@moderepo/biz-console';
+import { BizConsoleComponentPlugin, BizConsolePluginType, BizConsolePluginPack } from '@moderepo/biz-console';
 import { MyAccountInfoComponent, isMyAccountInfoComponentProps } from './MyAccountInfoComponent';
 import { MyCustomAccountPage, isMyCustomAccountPageProps } from './MyCustomAccountPage';
 import { MyAccountPrefComponent, isMyAccountPrefComponentProps } from './MyAccountPrefComponent';
@@ -18,7 +18,6 @@ export const bizConsolePlugins: BizConsolePluginPack = {
                 componentFunc: MyCustomAccountPage,
                 displayName: 'My Custom Account Page',
                 description: 'A custom page that display my account info',
-                icon: { source: IconSource.BIZ_CONSOLE, name: 'AccountOutlined' },
                 customPropsValidator: isMyCustomAccountPageProps,
             },
         } as BizConsoleComponentPlugin,
@@ -30,7 +29,6 @@ export const bizConsolePlugins: BizConsolePluginPack = {
                 componentFunc: MyAccountInfoComponent,
                 displayName: 'My Account Info Component',
                 description: 'A custom component that display my account info',
-                icon: { source: IconSource.BIZ_CONSOLE, name: 'AccountOutlined' },
                 customPropsValidator: isMyAccountInfoComponentProps,
             },
         } as BizConsoleComponentPlugin,
@@ -42,7 +40,6 @@ export const bizConsolePlugins: BizConsolePluginPack = {
                 componentFunc: MyAccountPrefComponent,
                 displayName: 'My Account Preferences Component',
                 description: 'A custom component that display my account preferences',
-                icon: { source: IconSource.BIZ_CONSOLE, name: 'AccountOutlined' },
                 customPropsValidator: isMyAccountPrefComponentProps,
             },
         } as BizConsoleComponentPlugin,

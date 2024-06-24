@@ -1,4 +1,10 @@
-import { BizConsoleDashboardWidgetPlugin, BizConsolePluginType, IconSource, BizConsolePluginPack } from '@moderepo/biz-console';
+import {
+    BizConsoleDashboardWidgetPlugin,
+    BizConsolePluginType,
+    IconSource,
+    BizConsolePluginPack,
+    ENTITY_VIEW_COMP_CATEGORY,
+} from '@moderepo/biz-console';
 import { TemperatureWidget } from './TemperatureWidget';
 import { humidityWidgetCustomSettingsSchema, temperatureWidgetCustomSettingsSchema } from './schema';
 import {
@@ -14,6 +20,7 @@ import { HumidityWidget } from './HumidityWidget';
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
+    bizConsoleVersion: '0.0.2',
     plugins: [
         {
             type: BizConsolePluginType.DASHBOARD_WIDGET,
@@ -24,6 +31,7 @@ export const bizConsolePlugins: BizConsolePluginPack = {
                 icon: { source: IconSource.BIZ_CONSOLE, name: 'TemperatureHumiditySensor' },
                 displayName: 'Temperature Widget',
                 description: 'Widget that display the current temperature of the selected location',
+                category: ENTITY_VIEW_COMP_CATEGORY.METRIC_VALUE,
                 customSettingsValidator: isTemperatureWidgetCustomSettings,
                 createInitialEntityViewCompSettings: createInitialTemperatureWidgetSettings,
                 customSettingsSchema: temperatureWidgetCustomSettingsSchema,
@@ -38,6 +46,7 @@ export const bizConsolePlugins: BizConsolePluginPack = {
                 icon: { source: IconSource.MUI, name: 'WaterDrop' },
                 displayName: 'Humidity Widget',
                 description: 'Widget that display the current humidity of the selected location',
+                category: ENTITY_VIEW_COMP_CATEGORY.METRIC_VALUE,
                 customSettingsValidator: isHumidityWidgetCustomSettings,
                 createInitialEntityViewCompSettings: createInitialHumidityWidgetSettings,
                 customSettingsSchema: humidityWidgetCustomSettingsSchema,

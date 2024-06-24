@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { useCallback, useState } from 'react';
+import React, { FormEvent, useCallback, useState } from 'react';
 import {
     APIError,
     BaseBizConsoleCompProps,
@@ -8,9 +8,10 @@ import {
     User,
     isValidObjectValue,
     useAuthenticationStore,
+    StyledForm,
+    StyledPanel,
 } from '@moderepo/biz-console';
-import * as StyledMyAccountComponents from './styled';
-import { Box, Button, SxProps, TextField, Theme, Typography } from '@mui/material';
+import { SxProps, Theme } from '@mui/material';
 
 export interface MyAccountInfoComponentProps extends BaseBizConsoleCompProps {
     readonly sx?: SxProps<Theme>;
@@ -60,22 +61,36 @@ export const MyAccountInfoComponent: React.FC<MyAccountInfoComponentProps> = ({ 
         }
     }, [authActions, loggedInUser.id, name]);
 
+    const onFormSubmit = useCallback(async (event: FormEvent) => {
+        event.preventDefault();
+    }, []);
+
     return (
-        <StyledMyAccountComponents.StyledMyAccountInfoComponent elevation={2} sx={sx}>
-            <Typography variant="h3" sx={{ paddingBottom: 2 }}>
-                My Account Info
-            </Typography>
-            <Box>ID: {loggedInUser.id}</Box>
-            <Box>Email: {loggedInUser.email}</Box>
-            <Box sx={{ padding: '16px 0' }}>
-                <TextField fullWidth label="Name" onChange={onUserNameChange} value={name ?? ''} />
-            </Box>
-            <Box sx={{ paddingTop: '16px', textAlign: 'end' }}>
-                <Button variant="contained" disabled={loggedInUser.name === name} onClick={saveUserName}>
-                    Save
-                </Button>
-            </Box>
-        </StyledMyAccountComponents.StyledMyAccountInfoComponent>
+        <StyledPanel.Panel sx={sx}>
+            <StyledForm.FormContainer>
+                <StyledForm.Form onSubmit={onFormSubmit}>
+                    <StyledPanel.HeaderBar>
+                        <StyledPanel.HeaderBarLeftContent>
+                            <StyledPanel.HeaderBarTitle>My Account Info</StyledPanel.HeaderBarTitle>
+                        </StyledPanel.HeaderBarLeftContent>
+                    </StyledPanel.HeaderBar>
+                    <StyledPanel.Content>
+                        <StyledForm.TextInputField label="ID" InputProps={{ readOnly: true }} value={loggedInUser.id} />
+                        <StyledForm.TextInputField label="Email" InputProps={{ readOnly: true }} value={loggedInUser.email} />
+                        <StyledForm.TextInputField label="Name" variant="outlined" value={name ?? ''} onChange={onUserNameChange} />
+                    </StyledPanel.Content>
+                    <StyledPanel.FooterBar>
+                        <StyledForm.ActionsBar>
+                            <StyledForm.RightActionsBar>
+                                <StyledForm.ActionButton variant="contained" disabled={loggedInUser.name === name} onClick={saveUserName}>
+                                    Save
+                                </StyledForm.ActionButton>
+                            </StyledForm.RightActionsBar>
+                        </StyledForm.ActionsBar>
+                    </StyledPanel.FooterBar>
+                </StyledForm.Form>
+            </StyledForm.FormContainer>
+        </StyledPanel.Panel>
     );
 };
 MyAccountInfoComponent.displayName = 'MyAccountInfoComponent';

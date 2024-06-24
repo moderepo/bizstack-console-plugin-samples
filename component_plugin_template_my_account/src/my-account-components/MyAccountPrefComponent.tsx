@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { useCallback } from 'react';
+import React, { FormEvent, useCallback } from 'react';
 import {
     BIZCONSOLE_THEME_TRANSLATION_KEY,
     BaseBizConsoleCompProps,
@@ -10,9 +10,10 @@ import {
     isValidObjectValue,
     useAuthenticationStore,
     useUserPreferencesStore,
+    StyledPanel,
+    StyledForm,
 } from '@moderepo/biz-console';
-import * as StyledMyAccountComponents from './styled';
-import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, SxProps, Theme, Typography } from '@mui/material';
+import { MenuItem, OutlinedInput, SelectChangeEvent, SxProps, Theme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 export interface MyAccountPrefComponentProps extends BaseBizConsoleCompProps {
@@ -64,38 +65,60 @@ export const MyAccountPrefComponent: React.FC<MyAccountPrefComponentProps> = ({ 
         [loggedInUser.id, projectId, userPreferencesActions]
     );
 
+    const onFormSubmit = useCallback(async (event: FormEvent) => {
+        event.preventDefault();
+    }, []);
+
     return (
-        <StyledMyAccountComponents.StyledMyAccountInfoComponent elevation={2} sx={sx}>
-            <Typography variant="h3" sx={{ paddingBottom: 2 }}>
-                My Preferences
-            </Typography>
-            <Box style={{ margin: '16px 0' }}>
-                <FormControl fullWidth>
-                    <InputLabel id="language-selector-label">Language</InputLabel>
-                    <Select
-                        labelId="language-selector-label"
-                        value={userPreferences?.language ?? ''}
-                        label="Language"
-                        size="small"
-                        onChange={onLanguageChange}
-                    >
-                        {SUPPORTED_LANGUAGES.map((language) => {
-                            return <MenuItem value={language.code}>{language.name}</MenuItem>;
-                        })}
-                    </Select>
-                </FormControl>
-            </Box>
-            <Box style={{ margin: '16px 0' }}>
-                <FormControl fullWidth>
-                    <InputLabel id="theme-selector-label">Theme</InputLabel>
-                    <Select labelId="theme-selector-label" value={userPreferences?.theme ?? ''} label="Theme" size="small" onChange={onThemeChange}>
-                        {Object.values(BizConsoleTheme).map((theme) => {
-                            return <MenuItem value={theme}>{trans(BIZCONSOLE_THEME_TRANSLATION_KEY[theme])}</MenuItem>;
-                        })}
-                    </Select>
-                </FormControl>
-            </Box>
-        </StyledMyAccountComponents.StyledMyAccountInfoComponent>
+        <StyledPanel.Panel sx={sx}>
+            <StyledForm.FormContainer>
+                <StyledForm.Form onSubmit={onFormSubmit}>
+                    <StyledPanel.HeaderBar>
+                        <StyledPanel.HeaderBarLeftContent>
+                            <StyledPanel.HeaderBarTitle> My Preferences</StyledPanel.HeaderBarTitle>
+                        </StyledPanel.HeaderBarLeftContent>
+                    </StyledPanel.HeaderBar>
+                    <StyledPanel.Content>
+                        <StyledForm.StyledFormControl fullWidth variant="outlined" required={true}>
+                            <StyledForm.StyledInputLabel>Language</StyledForm.StyledInputLabel>
+                            <StyledForm.SelectInputField
+                                label="Language"
+                                input={<OutlinedInput notched label="Language" />}
+                                type={'number'}
+                                value={userPreferences?.language ?? ''}
+                                onChange={onLanguageChange}
+                            >
+                                {SUPPORTED_LANGUAGES.map((language) => {
+                                    return (
+                                        <MenuItem key={language.code} value={language.code} selected={language.code === userPreferences?.language}>
+                                            {language.name}
+                                        </MenuItem>
+                                    );
+                                })}
+                            </StyledForm.SelectInputField>
+                        </StyledForm.StyledFormControl>
+                        <StyledForm.StyledFormControl fullWidth variant="outlined" required={true}>
+                            <StyledForm.StyledInputLabel>Theme</StyledForm.StyledInputLabel>
+                            <StyledForm.SelectInputField
+                                label="Theme"
+                                input={<OutlinedInput notched label="Theme" />}
+                                type={'number'}
+                                value={userPreferences?.theme ?? ''}
+                                onChange={onThemeChange}
+                            >
+                                {Object.values(BizConsoleTheme).map((theme) => {
+                                    return (
+                                        <MenuItem key={theme} value={theme} selected={theme === userPreferences?.theme}>
+                                            {trans(BIZCONSOLE_THEME_TRANSLATION_KEY[theme])}
+                                        </MenuItem>
+                                    );
+                                })}
+                            </StyledForm.SelectInputField>
+                        </StyledForm.StyledFormControl>
+                    </StyledPanel.Content>
+                </StyledForm.Form>
+            </StyledForm.FormContainer>
+        </StyledPanel.Panel>
     );
 };
 MyAccountPrefComponent.displayName = 'MyAccountPrefComponent';
