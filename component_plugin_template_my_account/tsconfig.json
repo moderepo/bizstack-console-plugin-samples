@@ -15,7 +15,7 @@
         /* Linting */
         "strict": true,
         "noUnusedLocals": true,
-        "noUnusedParameters": true,
+        "noUnusedParameters": false,
         "noFallthroughCasesInSwitch": true,
         "paths": {
             // Because this app uses styled-component instead of Emotion, we need to tell TypeScript where to find the implementation
