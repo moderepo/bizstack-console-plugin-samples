@@ -2,6 +2,7 @@ import { BizConsoleComponentPlugin, BizConsolePluginType, BizConsolePluginPack }
 import { MyAccountInfoComponent, isMyAccountInfoComponentProps } from './MyAccountInfoComponent';
 import { MyCustomAccountPage, isMyCustomAccountPageProps } from './MyCustomAccountPage';
 import { MyAccountPrefComponent, isMyAccountPrefComponentProps } from './MyAccountPrefComponent';
+import { LogoutButton, isLogoutButtonProps } from './LogoutButton';
 
 /**
  * This is the plugin configuration that is needed by BizConsole. The object name MUST be `bizConsolePlugin` because when BizConsole
@@ -41,6 +42,17 @@ export const bizConsolePlugins: BizConsolePluginPack = {
                 displayName: 'My Account Preferences Component',
                 description: 'A custom component that display my account preferences',
                 customPropsValidator: isMyAccountPrefComponentProps,
+            },
+        } as BizConsoleComponentPlugin,
+        {
+            type: BizConsolePluginType.COMPONENT,
+            name: 'Logout Button',
+            componentTypeSettings: {
+                type: LogoutButton.displayName as string,
+                componentFunc: LogoutButton,
+                displayName: 'Logout Button',
+                description: 'A button to log the user out',
+                customPropsValidator: isLogoutButtonProps,
             },
         } as BizConsoleComponentPlugin,
     ],
