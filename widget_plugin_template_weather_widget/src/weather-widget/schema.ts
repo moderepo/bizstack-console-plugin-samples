@@ -65,9 +65,6 @@ export const temperatureWidgetCustomSettingsSchema: BaseEntityViewCompCustomSett
     ],
 };
 
-
-
-
 /**
  * Create the Schema for the HumidityEntityViewCompCustomSettings so that it can be configured from a UI
  */

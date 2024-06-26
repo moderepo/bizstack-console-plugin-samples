@@ -83,7 +83,6 @@ export const createInitialTemperatureWidgetSettings = (compType: string): Generi
     };
 };
 
-
 /*************************************************************  HUMIDITY WIDGET MODELS *********************************************************/
 export interface HumidityWidgetCustomSettings extends BaseEntityViewCompCustomSettings {
     readonly title: string;

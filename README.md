@@ -141,7 +141,7 @@ based on the plugin that you are building.
     This is where we place the styled components to style the widget
 
   #### Files for Component plugins
-  TODO - Add instruction
+  The same as dashboard widget plugins
 
   #### File that ALL plugins package should have.
   - `config.ts`
@@ -172,7 +172,7 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
 
                 // This tells BizConsole where to download the plugin. Since we are testing it locally, the URL will be
                 // http://localhost.
-                "entry": "http://localhost:5000/assets/weatherWidget.js",
+                "url": "http://localhost:5000/assets/weatherWidget.js",
 
                 // This tells BizConsole the name of the module to look for. This name is the same name as the one specified in the
                 // vite.config.ts's `exposes`
@@ -200,11 +200,11 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
   ### Deploy the plugin
   When the widget is completed and ready to be used by other, you can deploy everything in the `dist/` directory to some public server. How you
   can do this is up to you. Because the code is static, you can just use any CDN e.g. AWS S3. Once the code is deployed and you have the URL
-  to the files, go back to DEV console and update the plugin config. Replace the `entry` URL from http://localhost:5000/assets/weatherWidget.js to
+  to the files, go back to DEV console and update the plugin config. Replace the `url` from http://localhost:5000/assets/weatherWidget.js to
   the URL of the server where you deployed the plugin to.
 
   ### Verify the widget in BizConsole
   Because the plugin's entry URL has been changed, you need to go back to BizConsole to make sure the widget is still working. If you don't see the
-  widget anymore, it is probably because the `entry` URL is invalid.
+  widget anymore, it is probably because the `url` is invalid.
   And since the plugin is now hosted on a public server, other users using this project should also be able to use the widget. You can verify this
   by having someone from another computer access the dashboard.
