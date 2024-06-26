@@ -25,7 +25,17 @@ export default defineConfig({
             },
 
             // Specify which library is shared. BizConsole will not load these library from the plugin and use the one installed internally instead.
-            shared: ['react', 'react-dom', '@mui/material', 'zustand', '@moderepo/biz-console', 'i18next', 'react-i18next'],
+            shared: [
+                'react',
+                'react-dom',
+                'react-router',
+                'react-router-dom',
+                '@mui/material',
+                'zustand',
+                '@moderepo/biz-console',
+                'i18next',
+                'react-i18next',
+            ],
         }),
     ],
     resolve: {
