@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useCallback } from 'react';
 import { Button } from '@mui/material';
-import { Icons, BaseBizConsoleCompProps, isValidObjectValue, SubSettingsErrorsLogger } from '@moderepo/bizstack-console-sdk';
+import { Icons, BaseBizConsoleCompProps, isValidObjectValue, SubSettingsErrorsLogger, isValidNumberValue } from '@moderepo/bizstack-console-sdk';
 import { useNavigate } from 'react-router-dom';
 
 export interface LogoutButtonProps extends BaseBizConsoleCompProps {
@@ -15,6 +15,20 @@ export const isLogoutButtonProps = (obj: unknown, errorLogger?: SubSettingsError
     const settings = obj as LogoutButtonProps;
 
     if (!isValidObjectValue(settings, true, errorLogger)) {
+        return false;
+    }
+
+    if (
+        !isValidNumberValue(
+            settings.projectId,
+            true,
+            false,
+            undefined,
+            undefined,
+            undefined,
+            new SubSettingsErrorsLogger(errorLogger, 'projectId', settings.projectId)
+        )
+    ) {
         return false;
     }
 

@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from 'react';
-import { BaseBizConsoleCompProps, SubSettingsErrorsLogger, isValidObjectValue } from '@moderepo/bizstack-console-sdk';
+import { BaseBizConsoleCompProps, SubSettingsErrorsLogger, isValidNumberValue, isValidObjectValue } from '@moderepo/bizstack-console-sdk';
 import { MyAccountInfoComponent } from './MyAccountInfoComponent';
 import * as StyledMyAccountComponents from './styled';
 import { Box, Typography } from '@mui/material';
@@ -17,6 +17,20 @@ export const isMyCustomAccountPageProps = (obj: unknown, errorLogger?: SubSettin
     const settings = obj as MyCustomAccountPageProps;
 
     if (!isValidObjectValue(settings, true, errorLogger)) {
+        return false;
+    }
+
+    if (
+        !isValidNumberValue(
+            settings.projectId,
+            true,
+            false,
+            undefined,
+            undefined,
+            undefined,
+            new SubSettingsErrorsLogger(errorLogger, 'projectId', settings.projectId)
+        )
+    ) {
         return false;
     }
 
