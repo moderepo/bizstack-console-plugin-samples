@@ -1,4 +1,4 @@
-import { BizConsoleComponentPlugin, BizConsolePluginType, BizConsolePluginPack } from '@moderepo/biz-console';
+import { BizConsoleComponentPlugin, BizConsolePluginType, BizConsolePluginPack } from '@moderepo/bizstack-console-sdk';
 import { MyAccountInfoComponent, isMyAccountInfoComponentProps } from './MyAccountInfoComponent';
 import { MyCustomAccountPage, isMyCustomAccountPageProps } from './MyCustomAccountPage';
 import { MyAccountPrefComponent, isMyAccountPrefComponentProps } from './MyAccountPrefComponent';

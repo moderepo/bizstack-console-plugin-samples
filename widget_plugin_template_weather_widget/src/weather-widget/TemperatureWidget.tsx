@@ -7,18 +7,18 @@ import {
     APIError,
     DataConsumer,
     DataConsumerRequests,
-    EntityViewComp,
+    EntityViewCompProps,
     ExternalAPI,
     FETCHING_DATA_STATUS,
     FetchingData,
     GenericEntityViewCompSettings,
     RequestMethod,
     TypeNotReady,
-} from '@moderepo/biz-console';
+} from '@moderepo/bizstack-console-sdk';
 import { TEMPERATURE_UNIT, TemperatureWidgetCustomSettings, createInitialTemperatureWidgetCustomSettings } from './models';
 import { TEMPERATURE_API_URL } from './utils';
 
-export interface TemperatureWidgetProps extends EntityViewComp {
+export interface TemperatureWidgetProps extends EntityViewCompProps {
     readonly compSettings: GenericEntityViewCompSettings<TemperatureWidgetCustomSettings>;
 }
 

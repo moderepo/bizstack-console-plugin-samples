@@ -12,12 +12,13 @@ import {
     useUserPreferencesStore,
     StyledPanel,
     StyledForm,
-} from '@moderepo/biz-console';
+} from '@moderepo/bizstack-console-sdk';
 import { MenuItem, OutlinedInput, SelectChangeEvent, SxProps, Theme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 export interface MyAccountPrefComponentProps extends BaseBizConsoleCompProps {
     readonly sx?: SxProps<Theme>;
+    readonly projectId: number;
 }
 
 /**

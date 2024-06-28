@@ -4,7 +4,7 @@ import {
     IconSource,
     BizConsolePluginPack,
     ENTITY_VIEW_COMP_CATEGORY,
-} from '@moderepo/biz-console';
+} from '@moderepo/bizstack-console-sdk';
 import { TemperatureWidget } from './TemperatureWidget';
 import { humidityWidgetCustomSettingsSchema, temperatureWidgetCustomSettingsSchema } from './schema';
 import {

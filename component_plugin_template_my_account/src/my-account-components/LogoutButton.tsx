@@ -1,10 +1,12 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useCallback } from 'react';
 import { Button } from '@mui/material';
-import { Icons, BaseBizConsoleCompProps, isValidObjectValue, SubSettingsErrorsLogger } from '@moderepo/biz-console';
+import { Icons, BaseBizConsoleCompProps, isValidObjectValue, SubSettingsErrorsLogger } from '@moderepo/bizstack-console-sdk';
 import { useNavigate } from 'react-router-dom';
 
-export interface LogoutButtonProps extends BaseBizConsoleCompProps {}
+export interface LogoutButtonProps extends BaseBizConsoleCompProps {
+    readonly projectId: number;
+}
 
 /**
  * Type guard function to check if the given obj is an instance of LogoutButtonProps.

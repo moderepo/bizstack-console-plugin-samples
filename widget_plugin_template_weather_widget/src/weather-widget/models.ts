@@ -6,7 +6,7 @@ import {
     isGPSCoordinate,
     isValidObjectValue,
     isValidStringValue,
-} from '@moderepo/biz-console';
+} from '@moderepo/bizstack-console-sdk';
 
 // This file is where we place the widget's customSettings models. Most widget has some specific settings in addition to the
 // BaseEntityViewCompCustomSettings. For example, some widgets needs the user to provide the title text to display.

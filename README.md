@@ -3,9 +3,9 @@ This document contains instruction on how to create plugins for BizConsole. This
 Plugin.
 
 ## Requirements
-Because `@moderepo/biz-console` package is published to Github, not NPM, you will need to create an Access Token from Github and log into
+Because `@moderepo/bizstack-console-sdk` package is published to Github, not NPM, you will need to create an Access Token from Github and log into
 npm with that token.
-- Create an Access Token here https://github.com/settings/tokens. Since you only need permission to install `@moderepo/biz-console` in your
+- Create an Access Token here https://github.com/settings/tokens. Since you only need permission to install `@moderepo/bizstack-console-sdk` in your
 project, you will only need `read:packages` access.
 - Then login into npm and tell it which registry you want it to use to find packages with this command
     ```
@@ -23,7 +23,7 @@ project, you will only need `read:packages` access.
 - Choose `Typescript`
 
 ### Install required libraries
-- Run `npm i -D @moderepo/biz-console` to install `@moderepo/biz-console`
+- Run `npm i -D @moderepo/bizstack-console-sdk` to install `@moderepo/bizstack-console-sdk`
 - Run `npm i -D @originjs/vite-plugin-federation` to install Module Federation plugin for Vite since we are using Vite instead of Webpack
 - Run `npm i zustand` to install Zustand.
 - Install Material UI
@@ -97,7 +97,7 @@ based on the plugin that you are building.
                     './weatherWidget': './src/weather-widget/WeatherWidget',
                 },
 
-                shared: ['react', 'react-dom', '@mui/material', 'zustand', '@moderepo/biz-console']
+                shared: ['react', 'react-dom', '@mui/material', 'zustand', '@moderepo/bizstack-console-sdk']
             })
         ],
         ...

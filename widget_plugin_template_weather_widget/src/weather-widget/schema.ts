@@ -5,7 +5,7 @@ import {
     EntityViewCustomSettingsParamType,
     DEFAULT_WIDGET_STYLE_SETTING_TABS,
     CUSTOM_SETTINGS_STYLE_PARAM,
-} from '@moderepo/biz-console';
+} from '@moderepo/bizstack-console-sdk';
 import { TEMPERATURE_UNIT } from './models';
 
 // This file is where we place the widget param settings. Each widget has a model for it's customSettings that contains all the widget's
