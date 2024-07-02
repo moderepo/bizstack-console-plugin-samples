@@ -4,7 +4,7 @@ import {
     IconSource,
     BizConsolePluginPack,
     ENTITY_VIEW_COMP_CATEGORY,
-} from '@moderepo/biz-console';
+} from '@moderepo/bizstack-console-sdk';
 import { TemperatureWidget } from './TemperatureWidget';
 import { humidityWidgetCustomSettingsSchema, temperatureWidgetCustomSettingsSchema } from './schema';
 import {
@@ -20,7 +20,7 @@ import { HumidityWidget } from './HumidityWidget';
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
-    bizConsoleVersion: '0.0.2',
+    bizConsoleVersion: '0.0.4',
     plugins: [
         {
             type: BizConsolePluginType.DASHBOARD_WIDGET,

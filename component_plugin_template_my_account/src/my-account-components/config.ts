@@ -1,4 +1,4 @@
-import { BizConsoleComponentPlugin, BizConsolePluginType, BizConsolePluginPack } from '@moderepo/biz-console';
+import { BizConsoleComponentPlugin, BizConsolePluginType, BizConsolePluginPack } from '@moderepo/bizstack-console-sdk';
 import { MyAccountInfoComponent, isMyAccountInfoComponentProps } from './MyAccountInfoComponent';
 import { MyCustomAccountPage, isMyCustomAccountPageProps } from './MyCustomAccountPage';
 import { MyAccountPrefComponent, isMyAccountPrefComponentProps } from './MyAccountPrefComponent';
@@ -9,7 +9,7 @@ import { LogoutButton, isLogoutButtonProps } from './LogoutButton';
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
-    bizConsoleVersion: '0.0.2',
+    bizConsoleVersion: '0.0.4',
     plugins: [
         {
             type: BizConsolePluginType.COMPONENT,

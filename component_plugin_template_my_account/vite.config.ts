@@ -32,7 +32,7 @@ export default defineConfig({
                 'react-router-dom',
                 '@mui/material',
                 'zustand',
-                '@moderepo/biz-console',
+                '@moderepo/bizstack-console-sdk',
                 'i18next',
                 'react-i18next',
             ],
@@ -48,7 +48,7 @@ export default defineConfig({
     build: {
         // This is important. It tells the compiler to generate the Javascript code that use the latest Javascript features
         target: 'esnext',
-        minify: true,
+        minify: false,
         // This is important. This will make the compiler not generate the style file. Having the style file
         // loaded with the module will break BizConsole's style
         cssCodeSplit: true,

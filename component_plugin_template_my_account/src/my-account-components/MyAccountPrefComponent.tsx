@@ -12,12 +12,14 @@ import {
     useUserPreferencesStore,
     StyledPanel,
     StyledForm,
-} from '@moderepo/biz-console';
+    isValidNumberValue,
+} from '@moderepo/bizstack-console-sdk';
 import { MenuItem, OutlinedInput, SelectChangeEvent, SxProps, Theme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 export interface MyAccountPrefComponentProps extends BaseBizConsoleCompProps {
     readonly sx?: SxProps<Theme>;
+    readonly projectId: number;
 }
 
 /**
@@ -30,6 +32,20 @@ export const isMyAccountPrefComponentProps = (
     const settings = obj as MyAccountPrefComponentProps;
 
     if (!isValidObjectValue(settings, true, errorLogger)) {
+        return false;
+    }
+
+    if (
+        !isValidNumberValue(
+            settings.projectId,
+            true,
+            false,
+            undefined,
+            undefined,
+            undefined,
+            new SubSettingsErrorsLogger(errorLogger, 'projectId', settings.projectId)
+        )
+    ) {
         return false;
     }
 

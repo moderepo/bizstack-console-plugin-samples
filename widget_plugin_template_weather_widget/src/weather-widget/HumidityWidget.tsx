@@ -7,18 +7,18 @@ import {
     APIError,
     DataConsumer,
     DataConsumerRequests,
-    EntityViewComp,
+    EntityViewCompProps,
     ExternalAPI,
     FETCHING_DATA_STATUS,
     FetchingData,
     GenericEntityViewCompSettings,
     RequestMethod,
     TypeNotReady,
-} from '@moderepo/biz-console';
+} from '@moderepo/bizstack-console-sdk';
 import { HumidityWidgetCustomSettings, createInitialHumidityWidgetCustomSettings } from './models';
 import { HUMIDITY_API_URL } from './utils';
 
-export interface HumidityWidgetProps extends EntityViewComp {
+export interface HumidityWidgetProps extends EntityViewCompProps {
     readonly compSettings: GenericEntityViewCompSettings<HumidityWidgetCustomSettings>;
 }
 

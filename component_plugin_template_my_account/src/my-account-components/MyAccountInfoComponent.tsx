@@ -10,7 +10,7 @@ import {
     useAuthenticationStore,
     StyledForm,
     StyledPanel,
-} from '@moderepo/biz-console';
+} from '@moderepo/bizstack-console-sdk';
 import { SxProps, Theme } from '@mui/material';
 
 export interface MyAccountInfoComponentProps extends BaseBizConsoleCompProps {
