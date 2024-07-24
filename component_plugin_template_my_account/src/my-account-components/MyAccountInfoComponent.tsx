@@ -3,7 +3,7 @@ import React, { FormEvent, useCallback, useState } from 'react';
 import {
     APIError,
     BaseBizConsoleCompProps,
-    MazeAPI,
+    ModeAPI,
     SubSettingsErrorsLogger,
     User,
     isValidObjectValue,
@@ -49,10 +49,10 @@ export const MyAccountInfoComponent: React.FC<MyAccountInfoComponentProps> = ({ 
     }, []);
 
     const saveUserName = useCallback(async () => {
-        const response = await MazeAPI.getInstance().updateUser(loggedInUser.id, { name });
+        const response = await ModeAPI.getInstance().updateUser(loggedInUser.id, { name });
         if (!(response instanceof APIError)) {
             // Reload user data
-            const updatedLoggedInUser = await MazeAPI.getInstance().getUser(loggedInUser.id);
+            const updatedLoggedInUser = await ModeAPI.getInstance().getUser(loggedInUser.id);
             if (!(updatedLoggedInUser instanceof APIError)) {
                 await authActions.setLoggedInUser(updatedLoggedInUser);
             }
