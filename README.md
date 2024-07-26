@@ -2,6 +2,12 @@
 This document contains instruction on how to create plugins for BizConsole. This directory also contain templates for different types of
 Plugin.
 
+> [!CAUTION]
+> As of July 2024, we only support React in the plugin system. Other frameworks are not supported yet.
+
+> [!CAUTION]
+> As of July 2024, the plugin system is in alpha release. We may need to make breaking changes in the system.
+
 ## Requirements
 Because `@moderepo/bizstack-console-sdk` package is published to Github, not NPM, you will need to create an Access Token from Github and log into
 npm with that token.
@@ -19,8 +25,16 @@ project, you will only need `read:packages` access.
 ## Create a project for the plugin using Vite
 ### Create a new project
 - Run `npx create-vite my_widget`
-- Choose `React` (Or choose other framework)
+- Choose `React` (Other frameworks are not supported yet)
 - Choose `Typescript`
+
+### Create a `.npmrc`
+Create a new `.npmrc` file in your project, or edit your `~/.npmrc` file to include the following line.
+
+```
+@moderepo:registry=https://npm.pkg.github.com/moderepo
+registry=https://registry.npmjs.org
+```
 
 ### Install required libraries
 - Run `npm i -D @moderepo/bizstack-console-sdk` to install `@moderepo/bizstack-console-sdk`
