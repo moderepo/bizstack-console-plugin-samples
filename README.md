@@ -191,12 +191,23 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
                 // This tells BizConsole the name of the module to look for. This name is the same name as the one specified in the
                 // vite.config.ts's `exposes`
                 "exposedModuleName": "weatherWidget",
+            },
+
+            // Do the same for Page/Component plugins
+            {
+                "name": "MyComponent"
+                "url": "http://localhost:5001/assets/myComponent.js",
+                "exposedModuleName": "myComponent",
             }
         ],
     }
   ```
 
   ### Try using the plugin in BizConsole
+  #### For Widget Plugins
+  When BizConsole loads Widget Plugins, it will automatically add the widgets defined in the plugins' `config.ts` to the BizConsole
+  widgets collection. The user will see these widgets right away in the Add Widget screen. No additional configuration required.
+
   - Go to BizConsole and go to any dashboard. And then go into Edit dashboard mode.
   - Click on `Add Widget` and you will see the new widget appear in the list of widgets. NOTE that only you can see the widget because this
   is running locally on your computer. Other users will not see the widget.
@@ -205,6 +216,30 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
     ![Configure Widget](./assets/configure_widget.png)
   - Check out the widget on the dashboard and verify if everything look good
     ![Weather Widget Preview](./assets/weather_widget_preview.png)
+
+  #### For Page/Component Plugins
+  Similar to Widget plugins, BizConsole will add all the components defined in the plugin's `config.ts` to the BizConsole's components
+  collection. All components stored in the BizConsole components collection can be used for building custom pages. However unlike Dashboard,
+  there is not UI to build custom pages. Therefore, to create custom pages and configuring the components to be added to the pages will
+  require editing the Project App config directly, the same place where we define the `plugins` config.
+- Go to DEV console on one of the environment that you need to use (DEV, STAGE, or PROD). And then go to the project you want to add the custom
+  pages to
+- Go to the `Apps` settings and select `biz-console`
+- Edit the `CUSTOM CONFIGURATION OBJECT`. Enter this JSON.
+  ```
+    {
+        ..., // other app settings e.g. Drawer menu, translation, etc...
+
+        // This is the plugins config mentioned in the previous section
+        "plugins": [
+            ...
+        ],
+
+        "customRoutes": [{
+        }]
+    }
+  ```
+
 
   ### Fix and update the plugin
   If you find any issue with the plugin and need to make changes, go back to the code and make changes. Once you are done with the changes and
