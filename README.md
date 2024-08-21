@@ -482,7 +482,7 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
           In summary, how the admin needs to configure the `dynamicProps` settings will depend on the route settings and how the data are provided
           in the URL.
 
-          IMPORTANT NOTE: A developer can decide that using `dynamicProps` is too complicated and have the component get the values for these
+          IMPORTANT NOTE: A developer can feel that using `dynamicProps` is too complicated and have the component get the values for these
           dynamic props in the component itself. For example, the project knows that the `userId` will be in the route params because the project
           will set up the custom routes like this
           ```
@@ -525,8 +525,11 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
           This works and the route config doesn't need the complicated `dynamicProps` settings to get the `userId` from the `route` source type.
           HOWEVER, this will make the `UserInfo` component not reusable in any other places because it assumes the `userId` exist in the
           route param. We can't use this component in a page like this http://bizconsole.domain/projects/1234/custom/my_custom_page?userId=1111.
-          For that URL, the `userId` is specified in the `search` param. Therefore, it is recommended that components don't try to get prop
-          values itself but get it through the `props` interface. This is how component should be implemented
+          For that URL, the `userId` is specified in the `search` param. This is fine if the component is implemented for 1 specific use case
+          and there is no plan on reusing it for other places or project. But to have the component reusable, it is recommended that components
+          don't try to get prop values itself but get it through the `props` interface. The component should not be aware of where the values
+          of its' props are from. It only need to care that the required props values are passed to it from the parent container and use them.
+          This is how component should be implemented
 
           ```
           interface UserInfoProps {
