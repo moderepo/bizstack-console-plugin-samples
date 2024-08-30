@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "// Support dev server remote entry file": "https://github.com/originjs/vite-plugin-federation/issues/525",
+    "build:watch": "vite build --watch & vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
