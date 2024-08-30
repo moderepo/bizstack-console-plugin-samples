@@ -182,7 +182,7 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
         "plugins": [
             {
                 // The name of the plugin. This is used by Module Federation to manage the remote modules.
-                "name": "WeatherWidget"
+                "name": "WeatherWidget",
 
                 // This tells BizConsole where to download the plugin. Since we are testing it locally, the URL will be
                 // http://localhost.
@@ -190,14 +190,14 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
 
                 // This tells BizConsole the name of the module to look for. This name is the same name as the one specified in the
                 // vite.config.ts's `exposes`
-                "exposedModuleName": "weatherWidget",
+                "exposedModuleName": "weatherWidget"
             },
 
             // Do the same for Page/Component plugins
             {
-                "name": "MyComponent"
+                "name": "MyComponent",
                 "url": "http://localhost:5001/assets/myComponent.js",
-                "exposedModuleName": "myComponent",
+                "exposedModuleName": "myComponent"
             }
         ],
     }
@@ -589,9 +589,14 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
 
 
   ### Fix and update the plugin
-  If you find any issue with the plugin and need to make changes, go back to the code and make changes. Once you are done with the changes and
-  want to test the widget again, re-run `npm run build` again. If the server is still running then you don't need to start the server again. If
-  not, run `npm run preview` again
+  If you find any issue with the plugin and need to make changes, go back to the code and make changes.
+  During development, it is recommended to use `npm run build:watch` instead of the combination of `npm run build` and `npm run preview`.
+
+  There are quite strong constraints when it comes to reloading during plugin development.
+  This is because, due to limitations of the vite-plugin-federation used in the plugin, vite dev mode cannot be used during plugin development.
+  As a result, you generally need to run a build every time you make changes.
+
+  However, since manually running `npm run build` each time can hinder smooth development, `npm run build:watch` is provided to monitor file changes.
 
   ### Deploy the plugin
   When the widget is completed and ready to be used by other, you can deploy everything in the `dist/` directory to some public server. How you
