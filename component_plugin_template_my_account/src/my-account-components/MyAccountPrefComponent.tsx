@@ -4,7 +4,6 @@ import {
     BIZCONSOLE_THEME_TRANSLATION_KEY,
     BaseBizConsoleCompProps,
     BizConsoleTheme,
-    SUPPORTED_LANGUAGES,
     SubSettingsErrorsLogger,
     User,
     isValidObjectValue,
@@ -13,6 +12,7 @@ import {
     StyledPanel,
     StyledForm,
     isValidNumberValue,
+    useSupportedLanguage,
 } from '@moderepo/bizstack-console-sdk';
 import { MenuItem, OutlinedInput, SelectChangeEvent, SxProps, Theme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
@@ -54,6 +54,7 @@ export const isMyAccountPrefComponentProps = (
 
 export const MyAccountPrefComponent: React.FC<MyAccountPrefComponentProps> = ({ projectId, sx }) => {
     const { t: trans } = useTranslation();
+    const { supportedLanguages } = useSupportedLanguage();
 
     const loggedInUser = useAuthenticationStore((store) => {
         return store.loggedInUser;
@@ -104,7 +105,7 @@ export const MyAccountPrefComponent: React.FC<MyAccountPrefComponentProps> = ({ 
                                 value={userPreferences?.language ?? ''}
                                 onChange={onLanguageChange}
                             >
-                                {SUPPORTED_LANGUAGES.map((language) => {
+                                {supportedLanguages.map((language) => {
                                     return (
                                         <MenuItem key={language.code} value={language.code} selected={language.code === userPreferences?.language}>
                                             {language.name}

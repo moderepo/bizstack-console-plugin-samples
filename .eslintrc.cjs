@@ -64,5 +64,6 @@ module.exports = {
         '@typescript-eslint/prefer-nullish-coalescing': 'off',
         '@typescript-eslint/no-dynamic-delete': 'off',
         '@typescript-eslint/non-nullable-type-assertion-style': 'off',
+        '@typescript-eslint/no-unused-vars': 'warn',
     },
 };
