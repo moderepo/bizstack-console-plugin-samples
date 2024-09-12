@@ -9,7 +9,8 @@ import { LogoutButton, isLogoutButtonProps } from './LogoutButton';
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
-    bizConsoleVersion: '1.0.0-alpha.0',
+    bizConsoleVersion: '1.0.0-alpha.10',
+    namespace: 'SampleMyAccountCompsPlugin',
     plugins: [
         {
             type: BizConsolePluginType.COMPONENT,

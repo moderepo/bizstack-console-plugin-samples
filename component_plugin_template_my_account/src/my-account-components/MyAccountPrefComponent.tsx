@@ -107,7 +107,11 @@ export const MyAccountPrefComponent: React.FC<MyAccountPrefComponentProps> = ({ 
                             >
                                 {supportedLanguages.map((language) => {
                                     return (
-                                        <MenuItem key={language.code} value={language.code} selected={language.code === userPreferences?.language}>
+                                        <MenuItem
+                                            key={language.languageTag}
+                                            value={language.languageTag}
+                                            selected={language.languageTag === userPreferences?.language}
+                                        >
                                             {language.name}
                                         </MenuItem>
                                     );
