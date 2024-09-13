@@ -13,15 +13,15 @@ export default defineConfig({
     plugins: [
         react(),
         federation({
-            name: 'Weather Widget',
+            name: 'Weather Widgets',
 
             // The build script will build the project and create an entry file. This filename tells the build script to name the
             // entry file with this name
-            filename: 'weatherWidget.js',
+            filename: 'weatherWidgets.js',
 
             // Modules to expose
             exposes: {
-                './weatherWidget': './src/weather-widget',
+                './weatherWidgets': './src/weather-widget',
             },
 
             // Specify which library is shared. BizConsole will not load these library from the plugin and use the one installed internally instead.
