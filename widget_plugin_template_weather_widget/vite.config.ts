@@ -21,7 +21,7 @@ export default defineConfig({
 
             // Modules to expose
             exposes: {
-                './weatherWidgets': './src/weather-widget',
+                './weatherWidgets': './src/weather-widgets',
             },
 
             // Specify which library is shared. BizConsole will not load these library from the plugin and use the one installed internally instead.
