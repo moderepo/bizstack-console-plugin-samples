@@ -1,15 +1,11 @@
-# Plugin Template
-This document contains instruction on how to create plugins for BizConsole. This directory also contain templates for different types of
+# BizStack Console Plugin Template
+This document contains instruction on how to create plugins for BizStack Console. This directory also contain templates for different types of
 Plugin.
 
-> [!CAUTION]
-> As of July 2024, we only support React in the plugin system. Other frameworks are not supported yet.
-
-> [!CAUTION]
-> As of July 2024, the plugin system is in alpha release. We may need to make breaking changes in the system.
+Please also read [BizStack Console Developer Manual](https://console.bizstack.cloud/documentation/developer-manual/index).
 
 ## Requirements
-Because `@moderepo/bizstack-console-sdk` package is published to Github, not NPM, you will need to create an Access Token from Github and log into
+Because `@moderepo/bizstack-console-sdk` package is published to GitHub, not NPM, you will need to create an Access Token from GitHub and log into
 npm with that token.
 - Create an Access Token here https://github.com/settings/tokens. Since you only need permission to install `@moderepo/bizstack-console-sdk` in your
 project, you will only need `read:packages` access.
@@ -20,13 +16,16 @@ project, you will only need `read:packages` access.
     > Password: TOKEN
     > Email: PUBLIC-EMAIL-ADDRESS
     ```
-    USERNAME is your Github username and use the token you generated as password. For more information see https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages
+    USERNAME is your GitHub username and use the token you generated as password. For more information see https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages
 
 ## Create a project for the plugin using Vite
 ### Create a new project
 - Run `npx create-vite my_widget`
 - Choose `React` (Other frameworks are not supported yet)
 - Choose `Typescript`
+
+> [!CAUTION]
+> As of July 2024, we only support React in the plugin system. Other frameworks are not supported yet.
 
 ### Create a `.npmrc`
 Create a new `.npmrc` file in your project, or edit your `~/.npmrc` file to include the following line.
@@ -42,7 +41,7 @@ registry=https://registry.npmjs.org
 - Run `npm i zustand` to install Zustand.
 - Install Material UI
   - This step is only required if the plugin needs to use MUI. Technically, the plugin can use any CSS library. However, to have the
-    plugin UI integrate smoothly with BizConsole, it is recommended that the plugin also use MUI. To install MUI, please follow the instruction
+    plugin UI integrate smoothly with BizStack Console, it is recommended that the plugin also use MUI. To install MUI, please follow the instruction
     [here](https://mui.com/material-ui/getting-started/installation/). Note that MUI recommend using @emotion style engine. However, if
     you want to use styled-component, please follow the instruction on how to use styled-component style engine. Also, using styled-component
     style engine will require additional setup. Please look at the example plugin's `tsconfig.json` and `vite.config.ts` for example.
@@ -85,7 +84,7 @@ update the config every time the port number change. In this example, we will us
             target: 'esnext',
 
             // This is important. This will make the compiler not generate the style file. Having the style file
-            // loaded with the module will break BizConsole's style
+            // loaded with the module will break BizStack Console's style
             cssCodeSplit: true,
 
             minify: true,
@@ -159,7 +158,7 @@ based on the plugin that you are building.
 
   #### File that ALL plugins package should have.
   - `config.ts`
-    This file is the most important file. It is the entry point to the plugins and will be loaded by BizConsole. This file is where we place
+    This file is the most important file. It is the entry point to the plugins and will be loaded by BizStack Console. This file is where we place
     the configuration for the plugins. In this file, there must be a variable called `bizConsolePlugins` and it must be an Object. Inside this
     object must contain an Array of plugins definition. The array can contain 1 or more plug in definitions and the definitions can be for
     different types of plugins. This allows 1 plugin package to implement multiple plugins.
@@ -184,11 +183,11 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
                 // The name of the plugin. This is used by Module Federation to manage the remote modules.
                 "name": "WeatherWidget",
 
-                // This tells BizConsole where to download the plugin. Since we are testing it locally, the URL will be
+                // This tells BizStack Console where to download the plugin. Since we are testing it locally, the URL will be
                 // http://localhost.
                 "url": "http://localhost:5000/assets/weatherWidget.js",
 
-                // This tells BizConsole the name of the module to look for. This name is the same name as the one specified in the
+                // This tells BizStack Console the name of the module to look for. This name is the same name as the one specified in the
                 // vite.config.ts's `exposes`
                 "exposedModuleName": "weatherWidget"
             },
@@ -203,12 +202,12 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
     }
   ```
 
-  ### Try using the plugin in BizConsole
+  ### Try using the plugin in BizStack Console
   #### For Widget Plugins
-  When BizConsole loads Widget Plugins, it will automatically add the widgets defined in the plugins' `config.ts` to the BizConsole
+  When BizStack Console loads Widget Plugins, it will automatically add the widgets defined in the plugins' `config.ts` to the BizStack Console
   widgets collection. The user will see these widgets right away in the Add Widget screen. No additional configuration required.
 
-  - Go to BizConsole and go to any dashboard. And then go into Edit dashboard mode.
+  - Go to BizStack Console and go to any dashboard. And then go into Edit dashboard mode.
   - Click on `Add Widget` and you will see the new widget appear in the list of widgets. NOTE that only you can see the widget because this
   is running locally on your computer. Other users will not see the widget.
     ![Select Widget](./assets/add_widget.png)
@@ -218,9 +217,9 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
     ![Weather Widget Preview](./assets/weather_widget_preview.png)
 
   #### For Page/Component Plugins
-  Similar to Widget plugins, BizConsole will add all the components defined in the plugin's `config.ts` to the BizConsole's components
-  collection. All components stored in the BizConsole components collection can be used for building custom pages. However unlike Dashboard,
-  there is not UI to build custom pages. Therefore, to create custom pages and configuring the components to be added to the pages will
+  Similar to Widget plugins, BizStack Console will add all the components defined in the plugin's `config.ts` to the BizStack Console's components
+  collection. All components stored in the BizStack Console components collection can be used for building custom pages. However unlike Dashboard,
+  there is no UI to build custom pages. Therefore, to create custom pages and configuring the components to be added to the pages will
   require editing the Project App config directly, the same place where we define the `plugins` config.
 - Go to DEV console on one of the environment that you need to use (DEV, STAGE, or PROD). And then go to the project you want to add the custom
   pages to
@@ -336,42 +335,42 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
       http://bizconsole.domain/projects/1234/custom/my_custom_page_2/abc then `entityId` will be `abc`.
 
     - `pageSettings` - The object that contain the configuration for the page. This config contains information about what component/s to add
-      to the page and how the components should be laid out. There are 2 types of page settings that BizConsole supports.
+      to the page and how the components should be laid out. There are 2 types of page settings that BizStack Console supports.
       - `custom` - This is a type of page which the developer is in control of the entire page. The developer will need to implement the
       page layout, handle adding the breadcrumb bar and tabs to the top section if the page needs to show breadcrumbs and tabs, and implement
-      the entire content of the page. BizConsole will create and display the component specified in the `componentSettings` on the page and
+      the entire content of the page. BizStack Console will create and display the component specified in the `componentSettings` on the page and
       that is all it does. The content of the page will be up to the implementation of the component. So based on the example 1 above, the
       component `MyPageComponent` will be the only component to be added to the page and the params `projectId` with value 1234 and `entityId` with
       value `xyz` will be passed to the component. Custom pages can have `customProps` and `dynamicProps` and more explanation on what the
       differences are will be provided in the next section.
 
-      - `generic` - This is a type of page that wants to use the same layout that most BizConsole pages use. Most of BizConsole pages are pages
-      that contain 1 or more components and use the Grid layout to layout the components. The `Account Settings` page is a good example of
+      - `generic` - This is a type of page that wants to use the same layout that most BizStack Console pages use. Most of BizStack Console pages are pages
+      that contain 1 or more components and use the Grid layout to lay out the components. The `Account Settings` page is a good example of
       this layout. This page contains 5 components, `Personal Info`, `Password`, `Two-Factor Authentication`, `Member Of`, and `Permissions`
-      components and they are laid out using the Grid layout. All of the other pages in BizConsole are also using the Grid layout to layout the
+      components and they are laid out using the Grid layout. All the other pages in BizStack Console are also using the Grid layout to lay out the
       components but they are just not obvious because most of them have only 1 component. Therefore, if a project wants to create a custom page
-      that has 1 or more components to display and wants to use the same layout as all BizConsole pages, they can use the `generic` pageType
+      that has 1 or more components to display and wants to use the same layout as all BizStack Console pages, they can use the `generic` pageType
       as shown in the example 2 config.
       Generic page type's settings has a few more options than `custom` page type.
-        - `title` and `subtitle` - These are optional title and subtitle that the admin can add to the page. Similar to other BizConsole page,
+        - `title` and `subtitle` - These are optional title and subtitle that the admin can add to the page. Similar to other BizStack Console page,
         the title and subtitle will be added to the top of the page.
         - `topActionBarSettings` - These are optional settings that allow the admin to add other components to the top action bar which are
         usually used for displaying breadcrumb bars. However, this bar is not restricted to breadcrumb bars. The admin can add any component
         to this bar as they like e.g. buttons. It is recommended that the admin use this area to display small components.
         - `componentsSettings` - Similar to the `custom` page type, the admin will need to provide the component/s to be displayed in the page.
-        However, unlike the `custom` page type, `generic` page type allows the admin to add more than 1 components. And for each component, the
+        However, unlike the `custom` page type, `generic` page type allows the admin to add more than 1 component. And for each component, the
         admin can configure the component's layout such as how many columns in the grid the component uses for different screen sizes.
 
       In summary, whether to use `custom` or `generic` page type depends on the use cases. It is recommended to use `generic` page type
       if possible because the page layout is set. The page's title/subtitle, top action bar, the component's layout are defined. The admin only need
-      to provide the information/components to be displayed in those areas. This will make sure the custom pages and BizConsole built-in pages
-      look the same. Also, if BizConsole changes the page layout design, the developers don't need to update the plugins and the admin don't need
+      to provide the information/components to be displayed in those areas. This will make sure the custom pages and BizStack Console built-in pages
+      look the same. Also, if BizStack Console changes the page layout design, the developers don't need to update the plugins and the admin don't need
       to update the `customRoutes` config. All the custom pages will automatically be updated to use the new design. `custom` page type should
-      be used when the admin wants the page to have it's own layout.
+      be used when the admin wants the page to have its own layout.
 
         - `componentSettings` - Both `custom` and `generic` page type require component settings which specify what component/s to add to the page.
         `custom` page type requires the settings for only 1 component which will use as the entire page. `generic` page types allow the admin to
-        add more than 1 components to the page. The settings object for both of these page types are the same.
+        add more than 1 component to the page. The settings object for both of these page types are the same.
           - `componentType` - The type name of the component to create/add to the page. This should be the value of the `type` attribute
           of the plugin config defined in `config.ts` file.
           - `customProps` - The prop values to be passed to the component. Components usually have props so that the component can be customized.
@@ -407,19 +406,19 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
             Source can also be `search` which mean the value for this prop comes from the URL search param. For example, if the URL of the
             page is like this http://bizconsole.domain/projects/1111/custom/my_custom_page?userId=1234 then the `userId` will be a search
             param source.
-            And the other source type is `state` which the value for the prop comes from the BizConsole states.
-            - `type` - The type of the source value. If source is `route` or `search`, BizConsole doesn't know what the type of the value is.
+            And the other source type is `state` which the value for the prop comes from the BizStack Console states.
+            - `type` - The type of the source value. If source is `route` or `search`, BizStack Console doesn't know what the type of the value is.
             For example, http://bizconsole.domain/projects/1111/custom/my_custom_page?entityId=1234. The value of the `entityId` param is `1234`. It
             looks like a number but it might not be what the case. `entityId` are strings but the user who create the entity can give it a value
             `1234` as ID. So if the component expects an `entityId`, it probably needs a `string` value. Therefore, the admin needs to tell
-            BizConsole how to treat the value of this `entityId` param because only the admin knows what value type the component needs. So in
-            this case, the admin should set `type` to `string` so that BizConsole can use the value `1234` as string and pass it to the component
+            BizStack Console how to treat the value of this `entityId` param because only the admin knows what value type the component needs. So in
+            this case, the admin should set `type` to `string` so that BizStack Console can use the value `1234` as string and pass it to the component
             as a string, not a number. Other types that are supported are `number`, `boolean`, `string_array`, `number_array`, and `boolean_array`.
             - `name` - The name of the props to look for from the source. For this example, `my_custom_page/:userId`, the `source` is `route` and
             `name` should be `userId`. For this example, http://bizconsole.domain/projects/1111/custom/my_custom_page?entityId=1234, the `source`
             should be `search` and the `name` should be `entityId`.
-            - `required` - To specify whether or not the prop is required. If this is set to `false`, then BizConsole will NOT throw error if the
-            value for the prop is not found. If set to `true` then BizConsole will throw an error if it is unable to find the prop value from
+            - `required` - To specify whether or not the prop is required. If this is set to `false`, then BizStack Console will NOT throw error if the
+            value for the prop is not found. If set to `true` then BizStack Console will throw an error if it is unable to find the prop value from
             the source that the admin specified.
             - `componentPropName` - For the case when the source's prop name is not the same as the component's prop name. Let's say the UserInfo
             component expect a prop name `userId` but the source param uses a different name. For example, let's say the URL is like this
@@ -528,7 +527,7 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
           For that URL, the `userId` is specified in the `search` param. This is fine if the component is implemented for 1 specific use case
           and there is no plan on reusing it for other places or project. But to have the component reusable, it is recommended that components
           don't try to get prop values itself but get it through the `props` interface. The component should not be aware of where the values
-          of its' props are from. It only need to care that the required props values are passed to it from the parent container and use them.
+          of its props are from. It only needs to care that the required props values are passed to it from the parent container and use them.
           This is how component should be implemented
 
           ```
@@ -604,8 +603,8 @@ http://localhost:5000/assets/weatherWidget.js based on the configuration we use 
   to the files, go back to DEV console and update the plugin config. Replace the `url` from http://localhost:5000/assets/weatherWidget.js to
   the URL of the server where you deployed the plugin to.
 
-  ### Verify the widget in BizConsole
-  Because the plugin's entry URL has been changed, you need to go back to BizConsole to make sure the widget is still working. If you don't see the
+  ### Verify the widget in BizStack Console
+  Because the plugin's entry URL has been changed, you need to go back to BizStack Console to make sure the widget is still working. If you don't see the
   widget anymore, it is probably because the `url` is invalid.
   And since the plugin is now hosted on a public server, other users using this project should also be able to use the widget. You can verify this
   by having someone from another computer access the dashboard.
