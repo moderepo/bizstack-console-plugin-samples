@@ -3,6 +3,7 @@ import { MyAccountInfoComponent, isMyAccountInfoComponentProps } from './MyAccou
 import { MyCustomAccountPage, isMyCustomAccountPageProps } from './MyCustomAccountPage';
 import { MyAccountPrefComponent, isMyAccountPrefComponentProps } from './MyAccountPrefComponent';
 import { LogoutButton, isLogoutButtonProps } from './LogoutButton';
+import { CustomMapComponent, isCustomMapComponentProps } from './CustomMapComponent';
 
 /**
  * This is the plugin configuration that is needed by BizConsole. The object name MUST be `bizConsolePlugin` because when BizConsole
@@ -54,6 +55,17 @@ export const bizConsolePlugins: BizConsolePluginPack = {
                 displayName: 'Logout Button',
                 description: 'A button to log the user out',
                 customPropsValidator: isLogoutButtonProps,
+            },
+        } as BizConsoleComponentPlugin,
+        {
+            type: BizConsolePluginType.COMPONENT,
+            name: 'Custom Map Component',
+            componentTypeSettings: {
+                type: CustomMapComponent.displayName as string,
+                componentFunc: CustomMapComponent,
+                displayName: 'Custom Map Component',
+                description: 'A custom component that display a custom map',
+                customPropsValidator: isCustomMapComponentProps,
             },
         } as BizConsoleComponentPlugin,
     ],

@@ -21,9 +21,6 @@
             // Because this app uses styled-component instead of Emotion, we need to tell TypeScript where to find the implementation
             // for styled engine. Or else, we will get run time error because Emotion is not installed.
             "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"],
-
-            // Tell TypeScript compiler where to find the type definitions for BizConsole
-            "biz-console-framework/*": ["./src/biz-console-framework/types/*"]
         }
     },
     "include": ["src"],

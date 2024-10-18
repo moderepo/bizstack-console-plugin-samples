@@ -5,6 +5,7 @@ import { MyAccountInfoComponent } from './MyAccountInfoComponent';
 import * as StyledMyAccountComponents from './styled';
 import { Box, Typography } from '@mui/material';
 import { MyAccountPrefComponent } from './MyAccountPrefComponent';
+import { CustomMapComponent } from './CustomMapComponent';
 
 export interface MyCustomAccountPageProps extends BaseBizConsoleCompProps {
     readonly projectId: number;
@@ -46,6 +47,12 @@ export const MyCustomAccountPage: React.FC<MyCustomAccountPageProps> = ({ projec
             </Box>
             <MyAccountInfoComponent />
             <MyAccountPrefComponent sx={{ marginTop: 2 }} projectId={projectId} />
+            <CustomMapComponent
+                latitude={35.68126027047642}
+                longitude={139.76700658271713}
+                zoom={10}
+                sx={{ marginTop: 2, width: '100%', height: '400px' }}
+            />
         </StyledMyAccountComponents.StyledMyCustomAccountPage>
     );
 };
