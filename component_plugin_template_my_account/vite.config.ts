@@ -35,12 +35,14 @@ export default defineConfig({
                 '@moderepo/bizstack-console-sdk',
                 'i18next',
                 'react-i18next',
+                // The following is required only when you want to implement a component that uses Google Maps.
+                '@vis.gl/react-google-maps',
             ],
         }),
     ],
     resolve: {
         alias: {
-            // Because we use styled-component instead of Emotion, we need to tell the complier where to find the styled engine
+            // Because we use styled-component instead of Emotion, we need to tell the compiler where to find the styled engine
             // when there is an import at '@mui/styled-engine'
             '@mui/styled-engine': '@mui/styled-engine-sc',
         },

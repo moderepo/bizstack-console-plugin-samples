@@ -21,7 +21,8 @@
     "react-router": "^6.24.0",
     "react-router-dom": "^6.24.0",
     "styled-components": "^6.1.11",
-    "zustand": "^4.5.2"
+    "zustand": "^4.5.2",
+    "@deck.gl/google-maps": "^9.0.24"
   },
   "devDependencies": {
     "@moderepo/bizstack-console-sdk": "^1.0.0",
