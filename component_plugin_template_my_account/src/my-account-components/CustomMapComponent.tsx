@@ -56,10 +56,9 @@ export const isCustomMapComponentProps = (obj: unknown, errorLogger?: SubSetting
 };
 
 export const CustomMapComponent: React.FC<CustomMapComponentProps> = ({ sx, latitude, longitude, zoom }) => {
-    // TODO FIXME useTheme doesn't recognize the BizStack Console theme that extends the MUI theme via module argumentation
+    // The theme defines the mapId for Google Maps.
     const theme = useTheme();
-    // eslint-disable-next-line
-    const mapId = (theme as any).mapId;
+    const mapId = theme.mapId;
     const mapTypeId = 'satellite';
 
     return (
