@@ -25,7 +25,7 @@ project, you will only need `read:packages` access.
 - Choose `Typescript`
 
 > [!CAUTION]
-> As of July 2024, we only support React in the plugin system. Other frameworks are not supported yet.
+> As of November 2024, we only support React in the plugin system. Other frameworks are not supported yet.
 
 ### Create a `.npmrc`
 Create a new `.npmrc` file in your project, or edit your `~/.npmrc` file to include the following line.
@@ -39,13 +39,18 @@ registry=https://registry.npmjs.org
 - Run `npm i -D @moderepo/bizstack-console-sdk` to install `@moderepo/bizstack-console-sdk`
 - Run `npm i -D @originjs/vite-plugin-federation` to install Module Federation plugin for Vite since we are using Vite instead of Webpack
 - Run `npm i zustand` to install Zustand.
-- Install Material UI
+- Install Material UI v5
   - This step is only required if the plugin needs to use MUI. Technically, the plugin can use any CSS library. However, to have the
-    plugin UI integrate smoothly with BizStack Console, it is recommended that the plugin also use MUI. To install MUI, please follow the instruction
-    [here](https://mui.com/material-ui/getting-started/installation/). Note that MUI recommend using @emotion style engine. However, if
+    plugin UI integrate smoothly with BizStack Console, it is recommended that the plugin also use MUI v5. To install MUI, please follow the instruction
+    [here](https://v5.mui.com/material-ui/getting-started/installation/). Note that MUI recommend using @emotion style engine. However, if
     you want to use styled-component, please follow the instruction on how to use styled-component style engine. Also, using styled-component
     style engine will require additional setup. Please look at the example plugin's `tsconfig.json` and `vite.config.ts` for example.
 - Install other libraries as needed e.g. eslint, prettier, etc...
+
+> [!CAUTION]
+> As of November 2024, please install MUI v5. MUI v6 is not supported yet.
+> `npm install @mui/material@5 @mui/styled-engine-sc@5 styled-components@5`
+> `npm i -D @types/styled-components`
 
 ### Delete unnecessary files (Optional)
 Because we use Vite to create a new React project, it will automatically create a simple app with a welcome page. Since this is a Plugin
