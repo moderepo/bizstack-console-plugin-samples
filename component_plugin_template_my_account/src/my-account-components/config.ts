@@ -10,7 +10,7 @@ import { CustomMapComponent, isCustomMapComponentProps } from './CustomMapCompon
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
-    bizConsoleVersion: '1.0.2',
+    bizConsoleVersion: '1.2.0',
     namespace: 'SampleMyAccountCompsPlugin',
     plugins: [
         {
