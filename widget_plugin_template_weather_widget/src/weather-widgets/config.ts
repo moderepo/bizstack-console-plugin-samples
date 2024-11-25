@@ -20,7 +20,7 @@ import { HumidityWidget } from './HumidityWidget';
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
-    bizConsoleVersion: '1.2.0',
+    bizConsoleVersion: '1.3.0',
     namespace: 'SampleWeatherWidgetPlugin',
     plugins: [
         {
