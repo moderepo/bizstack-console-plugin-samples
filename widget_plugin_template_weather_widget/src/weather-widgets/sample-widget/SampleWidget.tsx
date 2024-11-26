@@ -15,6 +15,9 @@ export interface SampleWidgetProps extends EntityViewCompProps {
     readonly compSettings: GenericEntityViewCompSettings<SampleWidgetCustomSettings>;
 }
 
+/**
+ * This sample shows how to create widget settings for widgets that fetch metric data.
+ */
 export const SampleWidget = React.forwardRef<DataConsumer<BaseDataConsumerContext>, SampleWidgetProps>(({ id, compSettings }, ref) => {
     const customSettings = useMemo(() => {
         return compSettings.customSettings ?? createInitialSampleWidgetCustomSettings();
@@ -24,7 +27,7 @@ export const SampleWidget = React.forwardRef<DataConsumer<BaseDataConsumerContex
      * Helper function to create data request objects
      */
     const getDataRequestsHandler = useCallback((): DataConsumerRequests<BaseDataConsumerContext> | TypeNotReady | undefined => {
-        // See TemperatureWidget for information on how to make data requests. You make a data request using the dataSourcesSettings.
+        // See TemperatureWidget for information on how to make data requests. You can make data requests using the dataSourcesSettings.
         console.log(customSettings.dataSourcesSettings[0]?.numericMetrics);
         return undefined;
     }, [customSettings.dataSourcesSettings]);

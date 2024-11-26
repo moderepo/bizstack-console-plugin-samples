@@ -27,7 +27,9 @@ import {
 // };
 
 /**
- * This example shows how to utilize the generic data source parameters.
+ * This example shows how to utilize the generic custom settings.
+ * The generic settings has a lot of params by default. Pick only the necessary parameters for the widget.
+ * Some options, such as `maxSize` and `viewSettings` are also available.
  * As an example, this defines a schema to allow users to select a numeric metric.
  */
 export const sampleWidgetCustomSettingsSchema: BaseEntityViewCompCustomSettingsSchema = {
