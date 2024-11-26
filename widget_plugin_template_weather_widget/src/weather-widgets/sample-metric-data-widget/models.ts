@@ -12,9 +12,9 @@ import {
 } from '@moderepo/bizstack-console-sdk';
 
 /**
- * SampleWidget custom settings structure
+ * SampleMetricDataWidget custom settings structure
  */
-export interface SampleWidgetCustomSettings extends BaseEntityViewCompCustomSettings {
+export interface SampleMetricDataWidgetCustomSettings extends BaseEntityViewCompCustomSettings {
     // In most cases, `entityId` and `dataSourcesSettings` will be required to fetch data from the BizStack backend.
     // entityId is used to show data for a SPECIFIC entity instead of the entity that the dashboard is showing.
     // However, you don't have to define it because BaseEntityViewCompCustomSettings has it.
@@ -29,12 +29,15 @@ export interface SampleWidgetCustomSettings extends BaseEntityViewCompCustomSett
 }
 
 /**
- * Type guard function to check if the given obj is an instance of SampleWidgetCustomSettings.
+ * Type guard function to check if the given obj is an instance of SampleMetricDataWidgetCustomSettings.
  */
-export const isSampleWidgetCustomSettings = (obj: unknown, errorLogger?: SubSettingsErrorsLogger | undefined): obj is SampleWidgetCustomSettings => {
-    const settings = obj as SampleWidgetCustomSettings;
+export const isSampleMetricDataWidgetCustomSettings = (
+    obj: unknown,
+    errorLogger?: SubSettingsErrorsLogger | undefined
+): obj is SampleMetricDataWidgetCustomSettings => {
+    const settings = obj as SampleMetricDataWidgetCustomSettings;
 
-    // SampleWidgetCustomSettings extends BaseEntityViewCompCustomSettings therefore we can call
+    // SampleMetricDataWidgetCustomSettings extends BaseEntityViewCompCustomSettings therefore we can call
     // isBaseEntityViewCompCustomSettings to validate the settings for EntityViewCompCustomSettings
     if (!isBaseEntityViewCompCustomSettings(settings, errorLogger)) {
         return false;
@@ -59,20 +62,22 @@ export const isSampleWidgetCustomSettings = (obj: unknown, errorLogger?: SubSett
 };
 
 /**
- * A function that create an Initial JSON for a SampleWidget component's custom settings.
+ * A function that create an Initial JSON for a SampleMetricDataWidget component's custom settings.
  */
-export const createInitialSampleWidgetCustomSettings = (): SampleWidgetCustomSettings => {
+export const createInitialSampleMetricDataWidgetCustomSettings = (): SampleMetricDataWidgetCustomSettings => {
     return {
         dataSourcesSettings: [],
     };
 };
 
 /**
- * A function that create an Initial JSON for a SampleWidget component settings.
+ * A function that create an Initial JSON for a SampleMetricDataWidget component settings.
  */
-export const createInitialSampleWidgetSettings = (compType: string): GenericEntityViewCompSettings<SampleWidgetCustomSettings> => {
+export const createInitialSampleMetricDataWidgetSettings = (
+    compType: string
+): GenericEntityViewCompSettings<SampleMetricDataWidgetCustomSettings> => {
     return {
         componentType: compType,
-        customSettings: createInitialSampleWidgetCustomSettings(),
+        customSettings: createInitialSampleMetricDataWidgetCustomSettings(),
     };
 };

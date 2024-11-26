@@ -13,7 +13,7 @@ import {
 /**
  * This is an example schema to show all generic data source parameters, but it won't be practical.
  */
-// export const sampleWidgetCustomSettingsSchema: BaseEntityViewCompCustomSettingsSchema = {
+// export const sampleMetricDataWidgetCustomSettingsSchema: BaseEntityViewCompCustomSettingsSchema = {
 //     tabs: [
 //         {
 //             ...DEFAULT_WIDGET_MAIN_SETTING_TABS,
@@ -32,7 +32,7 @@ import {
  * Some options, such as `maxSize` and `viewSettings` are also available.
  * As an example, this defines a schema to allow users to select a numeric metric.
  */
-export const sampleWidgetCustomSettingsSchema: BaseEntityViewCompCustomSettingsSchema = {
+export const sampleMetricDataWidgetCustomSettingsSchema: BaseEntityViewCompCustomSettingsSchema = {
     tabs: [
         {
             ...DEFAULT_WIDGET_MAIN_SETTING_TABS,

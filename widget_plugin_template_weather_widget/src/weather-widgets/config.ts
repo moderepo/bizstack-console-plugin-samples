@@ -14,7 +14,12 @@ import {
     isTemperatureWidgetCustomSettings,
 } from './models';
 import { HumidityWidget } from './HumidityWidget';
-import { createInitialSampleWidgetSettings, isSampleWidgetCustomSettings, SampleWidget, sampleWidgetCustomSettingsSchema } from './sample-widget';
+import {
+    createInitialSampleMetricDataWidgetSettings,
+    isSampleMetricDataWidgetCustomSettings,
+    SampleMetricDataWidget,
+    sampleMetricDataWidgetCustomSettingsSchema,
+} from './sample-metric-data-widget';
 
 /**
  * This is the plugin configuration that is needed by BizConsole. The object name MUST be `bizConsolePlugin` because when BizConsole
@@ -56,17 +61,17 @@ export const bizConsolePlugins: BizConsolePluginPack = {
         } as BizConsoleDashboardWidgetPlugin,
         {
             type: BizConsolePluginType.DASHBOARD_WIDGET,
-            name: 'Sample widget',
+            name: 'Sample metric data widget',
             widgetTypeSettings: {
-                type: SampleWidget.displayName as string,
-                componentFunc: SampleWidget,
+                type: SampleMetricDataWidget.displayName as string,
+                componentFunc: SampleMetricDataWidget,
                 icon: { source: IconSource.BIZ_CONSOLE, name: 'SettingOutlined' },
-                displayName: 'Sample Widget',
-                description: 'Widget that has metrics custom settings',
+                displayName: 'Sample Metric Data Widget',
+                description: 'Widget with custom settings for retrieving metric data',
                 category: ENTITY_VIEW_COMP_CATEGORY.METRIC_VALUE,
-                customSettingsValidator: isSampleWidgetCustomSettings,
-                createInitialEntityViewCompSettings: createInitialSampleWidgetSettings,
-                customSettingsSchema: sampleWidgetCustomSettingsSchema,
+                customSettingsValidator: isSampleMetricDataWidgetCustomSettings,
+                createInitialEntityViewCompSettings: createInitialSampleMetricDataWidgetSettings,
+                customSettingsSchema: sampleMetricDataWidgetCustomSettingsSchema,
             },
         } as BizConsoleDashboardWidgetPlugin,
     ],

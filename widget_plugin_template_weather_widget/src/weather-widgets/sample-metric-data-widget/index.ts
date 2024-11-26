@@ -1,3 +1,3 @@
 export * from './models';
-export * from './SampleWidget';
+export * from './SampleMetricDataWidget';
 export * from './schema';
