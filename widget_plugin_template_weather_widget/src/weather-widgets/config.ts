@@ -14,6 +14,12 @@ import {
     isTemperatureWidgetCustomSettings,
 } from './models';
 import { HumidityWidget } from './HumidityWidget';
+import {
+    createInitialSampleMetricDataWidgetSettings,
+    isSampleMetricDataWidgetCustomSettings,
+    SampleMetricDataWidget,
+    sampleMetricDataWidgetCustomSettingsSchema,
+} from './sample-metric-data-widget';
 
 /**
  * This is the plugin configuration that is needed by BizConsole. The object name MUST be `bizConsolePlugin` because when BizConsole
@@ -51,6 +57,21 @@ export const bizConsolePlugins: BizConsolePluginPack = {
                 customSettingsValidator: isHumidityWidgetCustomSettings,
                 createInitialEntityViewCompSettings: createInitialHumidityWidgetSettings,
                 customSettingsSchema: humidityWidgetCustomSettingsSchema,
+            },
+        } as BizConsoleDashboardWidgetPlugin,
+        {
+            type: BizConsolePluginType.DASHBOARD_WIDGET,
+            name: 'Sample metric data widget',
+            widgetTypeSettings: {
+                type: SampleMetricDataWidget.displayName as string,
+                componentFunc: SampleMetricDataWidget,
+                icon: { source: IconSource.BIZ_CONSOLE, name: 'SettingOutlined' },
+                displayName: 'Sample Metric Data Widget',
+                description: 'Widget with custom settings for retrieving metric data',
+                category: ENTITY_VIEW_COMP_CATEGORY.METRIC_VALUE,
+                customSettingsValidator: isSampleMetricDataWidgetCustomSettings,
+                createInitialEntityViewCompSettings: createInitialSampleMetricDataWidgetSettings,
+                customSettingsSchema: sampleMetricDataWidgetCustomSettingsSchema,
             },
         } as BizConsoleDashboardWidgetPlugin,
     ],
