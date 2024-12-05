@@ -27,6 +27,47 @@ import {
 // };
 
 /**
+ * This example shows how to utilize the generic custom settings params.
+ * The generic custom settings has a lot of params by default. Pick only the necessary parameters for the widget.
+ * The example below defines a schema to allow users to select multiple numeric metrics (without tag metrics).
+ */
+// export const sampleMetricDataWidgetCustomSettingsSchema: BaseEntityViewCompCustomSettingsSchema = {
+//     tabs: [
+//         {
+//             ...DEFAULT_WIDGET_MAIN_SETTING_TABS,
+//             params: [
+//                 {
+//                     ...CUSTOM_SETTINGS_ENTITY_ID_PARAM,
+//                     // Allow users to select an Entity with metrics
+//                     entityConstraints: {
+//                         hasMetrics: true,
+//                     },
+//                 },
+//                 {
+//                     ...CUSTOM_SETTINGS_METRICS_DATA_SOURCES_SETTINGS_PARAM,
+//                     params: [
+//                         CUSTOM_SETTINGS_DATA_SOURCE_METRICS_DEFINITION_ID_PARAM,
+//                         {
+//                             ...CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_METRICS_PARAM,
+//                             params: [
+//                                 CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_METRIC_VALUE_NAME_PARAM,
+//                                 // CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_METRIC_VIEW_SETTINGS_PARAM
+//                             ],
+//                         },
+//                         // CUSTOM_SETTINGS_DATA_SOURCE_TAG_METRICS_PARAM, // No need for tag metrics params
+//                         // CUSTOM_SETTINGS_DATA_SOURCE_AGGREGATION_PARAM, // No need for aggregation options
+//                     ],
+//                 },
+//             ],
+//         },
+//         {
+//             ...DEFAULT_WIDGET_STYLE_SETTING_TABS,
+//             params: [CUSTOM_SETTINGS_STYLE_PARAM],
+//         },
+//     ],
+// };
+
+/**
  * This example shows how to utilize the generic custom settings.
  * The generic settings has a lot of params by default. Pick only the necessary parameters for the widget.
  * Some options, such as `maxSize` and `viewSettings` are also available.
