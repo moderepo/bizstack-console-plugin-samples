@@ -84,7 +84,7 @@ export const sampleMetricDataWidgetCustomSettingsSchema: BaseEntityViewCompCusto
                     entityConstraints: {
                         hasMetrics: true,
                     },
-                },
+                } satisfies typeof CUSTOM_SETTINGS_ENTITY_ID_PARAM,
                 {
                     ...CUSTOM_SETTINGS_METRICS_DATA_SOURCES_SETTINGS_PARAM,
                     // Set maxSize to limit the number of data sources (users can set up only 1 data source)
@@ -104,16 +104,16 @@ export const sampleMetricDataWidgetCustomSettingsSchema: BaseEntityViewCompCusto
                                 CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_METRIC_VALUE_NAME_PARAM,
                                 // CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_METRIC_VIEW_SETTINGS_PARAM
                             ],
-                        },
+                        } satisfies typeof CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_METRICS_PARAM,
                         // CUSTOM_SETTINGS_DATA_SOURCE_TAG_METRICS_PARAM, // No need for tag metrics params
                         // CUSTOM_SETTINGS_DATA_SOURCE_AGGREGATION_PARAM, // No need for aggregation options
                     ],
-                },
+                } satisfies typeof CUSTOM_SETTINGS_METRICS_DATA_SOURCES_SETTINGS_PARAM,
             ],
         },
         {
             ...DEFAULT_WIDGET_STYLE_SETTING_TABS,
             params: [CUSTOM_SETTINGS_STYLE_PARAM],
-        },
+        } satisfies typeof DEFAULT_WIDGET_STYLE_SETTING_TABS,
     ],
 };
