@@ -26,7 +26,7 @@ import {
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
-    bizConsoleVersion: '1.4.1',
+    bizConsoleVersion: '1.5.0',
     namespace: 'SampleWeatherWidgetPlugin',
     plugins: [
         {
