@@ -5,10 +5,10 @@ Plugin.
 Please also read [BizStack Console Developer Manual](https://console.bizstack.cloud/documentation/developer-manual/index).
 
 ## Requirements
-Because `@moderepo/bizstack-console-sdk` package is published to GitHub, not NPM, you will need to create an Access Token from GitHub and log into
+Because `@moderepo/bizstack-console-sdk` package is published to [GitHub Packages](https://github.com/moderepo/bizstack-console/pkgs/npm/bizstack-console-sdk), not NPM, you will need to create an Access Token from GitHub and log into
 npm with that token.
-- Create an Access Token here https://github.com/settings/tokens. Since you only need permission to install `@moderepo/bizstack-console-sdk` in your
-project, you will only need `read:packages` access.
+- Create a personal access token (classic) here https://github.com/settings/tokens. Since you only need permission to install `@moderepo/bizstack-console-sdk` in your
+project, you will only need `read:packages` access. (NOTE: GitHub Packages only supports authentication using the classic token.)
 - Then login into npm and tell it which registry you want it to use to find packages with this command
     ```
     $ npm login --registry=https://npm.pkg.github.com
