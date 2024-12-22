@@ -19,6 +19,9 @@ project, you will only need `read:packages` access. (NOTE: GitHub Packages only 
     USERNAME is your GitHub username and use the token you generated as password. For more information see https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages
 
 ## Create a project for the plugin using Vite
+
+We use [Vite](https://vite.dev/) for building the project.  We use its module federation plugin.
+
 ### Create a new project
 - Run `npx create-vite my_widget`
 - Choose `React` (Other frameworks are not supported yet)
