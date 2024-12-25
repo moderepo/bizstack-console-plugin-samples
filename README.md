@@ -103,6 +103,9 @@ update the config every time the port number change. In this example, we will us
 - Configure the Module Federation plugin. We will use one of the plugins for example. You will need to modify this config accordingly
 based on the plugin that you are building.
   ```
+    // at the beginning of vite.config.ts
+    import federation from '@originjs/vite-plugin-federation'
+  
     export default defineConfig({
         ...,
         plugins: [
