@@ -69,14 +69,14 @@ export const MyAccountPrefComponent: React.FC<MyAccountPrefComponentProps> = ({ 
     });
 
     const onLanguageChange = useCallback(
-        (event: SelectChangeEvent) => {
+        (event: SelectChangeEvent<unknown>) => {
             userPreferencesActions.setUserPreferencesLanguage(projectId, loggedInUser.id, event.target.value as string);
         },
         [loggedInUser.id, projectId, userPreferencesActions]
     );
 
     const onThemeChange = useCallback(
-        (event: SelectChangeEvent) => {
+        (event: SelectChangeEvent<unknown>) => {
             userPreferencesActions.setUserPreferencesTheme(projectId, loggedInUser.id, event.target.value as BizConsoleTheme);
         },
         [loggedInUser.id, projectId, userPreferencesActions]
