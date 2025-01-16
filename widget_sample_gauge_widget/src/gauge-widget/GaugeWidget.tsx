@@ -117,7 +117,7 @@ export const GaugeWidget = React.forwardRef<DataConsumer<GaugeWidgetDataConsumer
         );
 
         // Get view-component-friendly metrics info
-        const metricsInfo = useCombinedExtMetricsInfo(projectId, entityId, customSettings.dataSourcesSettings, entityClasses);
+        const metricsInfo = useCombinedExtMetricsInfo(dataSourcesAndTargetEntitiesPairs, entityClasses);
 
         // useMemo to cache values to be displayed
         const metricValues = useMemo(() => {
