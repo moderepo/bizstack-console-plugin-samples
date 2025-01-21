@@ -1,0 +1,38 @@
+{
+    "name": "dashboard_widget_plugin_template",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "// Support dev server remote entry file": "https://github.com/originjs/vite-plugin-federation/issues/525",
+        "build:watch": "vite build --watch & vite preview",
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@mui/material": "^5.16.7",
+        "@mui/styled-engine-sc": "^5.14.12",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "styled-components": "^5.3.11"
+    },
+    "devDependencies": {
+        "@amcharts/amcharts5": "^5.10.11",
+        "@amcharts/amcharts5-fonts": "^5.0.1",
+        "@moderepo/bizstack-console-sdk": "^1.8.0",
+        "@originjs/vite-plugin-federation": "^1.3.5",
+        "@types/react": "^18.2.66",
+        "@types/react-dom": "^18.2.22",
+        "@types/styled-components": "^5.1.34",
+        "@typescript-eslint/eslint-plugin": "^7.2.0",
+        "@typescript-eslint/parser": "^7.2.0",
+        "@vitejs/plugin-react": "^4.2.1",
+        "eslint": "^8.57.0",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-react-refresh": "^0.4.6",
+        "typescript": "5.4",
+        "vite": "^5.4.6"
+    }
+}
