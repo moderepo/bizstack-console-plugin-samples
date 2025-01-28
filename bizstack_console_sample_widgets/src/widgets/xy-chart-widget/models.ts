@@ -206,7 +206,7 @@ export const createInitialXYChartWidgetCustomSettings = (): XYChartWidgetCustomS
 /**
  * A function that create an Initial JSON for a XYChartWidgetSettings component settings.
  */
-export const createInitialXYChartWidgetSettings = (compType: string): GenericEntityViewCompSettings<XYChartWidgetCustomSettings> => {
+export const createInitialXYChartWidgetCompSettings = (compType: string): GenericEntityViewCompSettings<XYChartWidgetCustomSettings> => {
     return {
         componentType: compType,
         customSettings: createInitialXYChartWidgetCustomSettings(),
