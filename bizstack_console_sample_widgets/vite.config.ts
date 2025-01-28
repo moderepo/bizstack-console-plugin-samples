@@ -13,15 +13,15 @@ export default defineConfig({
     plugins: [
         react(),
         federation({
-            name: 'Gauge Widget',
+            name: 'BizStack Console Sample Widgets',
 
             // The build script will build the project and create an entry file. This filename tells the build script to name the
             // entry file with this name
-            filename: 'gaugeWidget.js',
+            filename: 'bizConsoleSampleWidgets.js',
 
             // Modules to expose
             exposes: {
-                './gaugeWidget': './src/gauge-widget',
+                './bizConsoleSampleWidgets': './src/widgets',
             },
 
             // Specify which library is shared. BizConsole will not load these library from the plugin and use the one installed internally instead.
@@ -34,6 +34,8 @@ export default defineConfig({
                 '@amcharts/amcharts5',
                 '@amcharts/amcharts5/xy',
                 '@amcharts/amcharts5/radar',
+                'i18next',
+                'react-i18next',
             ],
         }),
     ],

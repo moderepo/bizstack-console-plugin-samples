@@ -5,9 +5,8 @@ import {
     BizConsolePluginPack,
     ENTITY_VIEW_COMP_CATEGORY,
 } from '@moderepo/bizstack-console-sdk';
-import { GaugeWidget } from './GaugeWidget';
-import { createInitialGaugeWidgetCompSettings, isGaugeWidgetCustomSettings } from './models';
-import { gaugeWidgetCustomSettingsSchema } from './schema';
+import { createInitialGaugeWidgetCompSettings, GaugeWidget, gaugeWidgetCustomSettingsSchema, isGaugeWidgetCustomSettings } from './gauge-widget';
+import { XYChartWidget } from './xy-chart-widget/XYChartWidget';
 
 /**
  * This is the plugin configuration that is needed by BizConsole. The object name MUST be `bizConsolePlugin` because when BizConsole
@@ -27,6 +26,21 @@ export const bizConsolePlugins: BizConsolePluginPack = {
                 displayName: 'Gauge Widget - Plugin Example',
                 description: 'Widget that displays metric value using Gauge Chart',
                 category: ENTITY_VIEW_COMP_CATEGORY.METRIC_VALUE,
+                customSettingsValidator: isGaugeWidgetCustomSettings,
+                createInitialEntityViewCompSettings: createInitialGaugeWidgetCompSettings,
+                customSettingsSchema: gaugeWidgetCustomSettingsSchema,
+            },
+        } as BizConsoleDashboardWidgetPlugin,
+        {
+            type: BizConsolePluginType.DASHBOARD_WIDGET,
+            name: 'Sample XY Chart widget',
+            widgetTypeSettings: {
+                type: XYChartWidget.displayName as string,
+                componentFunc: XYChartWidget,
+                icon: { source: IconSource.BIZ_CONSOLE, name: 'LineGraphOutlined' },
+                displayName: 'XY Chart Widget - Plugin Example',
+                description: 'Widget that displays metric value using XY Chart',
+                category: ENTITY_VIEW_COMP_CATEGORY.CHARTS_AND_TABLES,
                 customSettingsValidator: isGaugeWidgetCustomSettings,
                 createInitialEntityViewCompSettings: createInitialGaugeWidgetCompSettings,
                 customSettingsSchema: gaugeWidgetCustomSettingsSchema,
