@@ -14,7 +14,7 @@ import { createInitialXYChartWidgetCompSettings, isXYChartWidgetCustomSettings, 
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
-    bizConsoleVersion: '1.10.0',
+    bizConsoleVersion: '1.11.0',
     namespace: 'ModeSamplePlugin',
     plugins: [
         {
