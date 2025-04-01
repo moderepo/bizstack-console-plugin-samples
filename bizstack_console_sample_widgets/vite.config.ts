@@ -9,6 +9,7 @@ export default defineConfig({
     },
     preview: {
         port: 5002,
+        cors: true,
     },
     plugins: [
         react(),
