@@ -5,6 +5,7 @@ import {
     BizConsolePluginPack,
     ENTITY_VIEW_COMP_CATEGORY,
 } from '@moderepo/bizstack-console-sdk';
+import sdk from '@moderepo/bizstack-console-sdk/package.json';
 import { createInitialGaugeWidgetCompSettings, GaugeWidget, gaugeWidgetCustomSettingsSchema, isGaugeWidgetCustomSettings } from './gauge-widget';
 import { XYChartWidget } from './xy-chart-widget/XYChartWidget';
 import { createInitialXYChartWidgetCompSettings, isXYChartWidgetCustomSettings, xyChartWidgetCustomSettingsSchema } from './xy-chart-widget';
@@ -14,7 +15,8 @@ import { createInitialXYChartWidgetCompSettings, isXYChartWidgetCustomSettings, 
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
-    bizConsoleVersion: '1.13.0',
+    pluginVersion: '1.0.0',
+    bizConsoleVersion: sdk.version,
     namespace: 'ModeSamplePlugin',
     plugins: [
         {
