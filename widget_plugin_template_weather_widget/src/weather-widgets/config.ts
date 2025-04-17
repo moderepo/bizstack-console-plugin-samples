@@ -5,6 +5,7 @@ import {
     BizConsolePluginPack,
     ENTITY_VIEW_COMP_CATEGORY,
 } from '@moderepo/bizstack-console-sdk';
+import sdk from '@moderepo/bizstack-console-sdk/package.json';
 import { TemperatureWidget } from './TemperatureWidget';
 import { humidityWidgetCustomSettingsSchema, temperatureWidgetCustomSettingsSchema } from './schema';
 import {
@@ -26,7 +27,8 @@ import {
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
-    bizConsoleVersion: '1.13.0',
+    pluginVersion: '1.0.0',
+    bizConsoleVersion: sdk.version,
     namespace: 'SampleWeatherWidgetPlugin',
     plugins: [
         {

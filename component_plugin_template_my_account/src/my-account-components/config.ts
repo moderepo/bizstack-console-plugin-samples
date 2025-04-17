@@ -1,4 +1,5 @@
 import { BizConsoleComponentPlugin, BizConsolePluginType, BizConsolePluginPack } from '@moderepo/bizstack-console-sdk';
+import sdk from '@moderepo/bizstack-console-sdk/package.json';
 import { MyAccountInfoComponent, isMyAccountInfoComponentProps } from './MyAccountInfoComponent';
 import { MyCustomAccountPage, isMyCustomAccountPageProps } from './MyCustomAccountPage';
 import { MyAccountPrefComponent, isMyAccountPrefComponentProps } from './MyAccountPrefComponent';
@@ -10,7 +11,8 @@ import { CustomMapComponent, isCustomMapComponentProps } from './CustomMapCompon
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
-    bizConsoleVersion: '1.13.0',
+    pluginVersion: '1.0.0',
+    bizConsoleVersion: sdk.version,
     namespace: 'SampleMyAccountCompsPlugin',
     plugins: [
         {
