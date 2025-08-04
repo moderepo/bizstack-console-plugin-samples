@@ -8,6 +8,7 @@ import {
     CUSTOM_SETTINGS_DATA_SOURCE_METRICS_DEFINITION_ID_PARAM,
     CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_METRICS_PARAM,
     CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_METRIC_VALUE_NAME_PARAM,
+    CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM,
 } from '@moderepo/bizstack-console-sdk';
 
 /**
@@ -109,6 +110,7 @@ export const sampleMetricDataWidgetCustomSettingsSchema: BaseEntityViewCompCusto
                         // CUSTOM_SETTINGS_DATA_SOURCE_AGGREGATION_PARAM, // No need for aggregation options
                     ],
                 } satisfies typeof CUSTOM_SETTINGS_METRICS_DATA_SOURCES_SETTINGS_PARAM,
+                CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM
             ],
         },
         {
