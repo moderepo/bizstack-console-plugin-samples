@@ -5,6 +5,7 @@ import {
     EntityViewCustomSettingsParamType,
     DEFAULT_WIDGET_STYLE_SETTING_TABS,
     CUSTOM_SETTINGS_STYLE_PARAM,
+    CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM,
 } from '@moderepo/bizstack-console-sdk';
 import { TEMPERATURE_UNIT } from './models';
 
@@ -56,6 +57,7 @@ export const temperatureWidgetCustomSettingsSchema: BaseEntityViewCompCustomSett
                         },
                     ],
                 },
+                CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM
             ],
         },
         {
@@ -89,6 +91,7 @@ export const humidityWidgetCustomSettingsSchema: BaseEntityViewCompCustomSetting
                     description: 'Select the location you want to show temperature data for',
                     required: true,
                 },
+                CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM
             ],
         },
         {

@@ -35,6 +35,7 @@ import {
     CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_VALUE_TRANSFORMATION_FORMULA_PARAM,
     CUSTOM_SETTINGS_DATA_SOURCE_VIEW_SETTINGS_DISPLAY_NAME_PARAM,
     CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_METRIC_VIEW_SETTINGS_PARAM,
+    CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM,
 } from '@moderepo/bizstack-console-sdk';
 import { MAX_GAUGE_CHART_BAND_WIDTH, MIN_GAUGE_CHART_BAND_WIDTH } from './models';
 
@@ -168,6 +169,7 @@ export const gaugeWidgetCustomSettingsSchema: BaseEntityViewCompCustomSettingsSc
                     ...CUSTOM_SETTINGS_DATA_AGE_LIMIT_PARAM,
                     description: '{{entity.view_comp.common.custom_settings.data_age_limit.description_with_time_range_note}}',
                 },
+                CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM
             ],
         },
         {
