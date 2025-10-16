@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --config vite.config.selfhosted.ts",
     "build": "tsc && vite build",
     "// Support dev server remote entry file": "https://github.com/originjs/vite-plugin-federation/issues/525",
     "build:watch": "vite build --watch & vite preview",
@@ -36,6 +36,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "prettier": "^3.6.2",
     "typescript": "^5.2.2",
     "vite": "^5.4.8"
   }
