@@ -1,20 +1,12 @@
 import { CssBaseline } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
 import React, { useCallback, useEffect, useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import * as ReactRouterDOM from 'react-router-dom';
+import { Outlet, RouterProvider } from 'react-router-dom';
 import { Box } from '@mui/material';
-import { DateLocalizationProvider, DialogProvider, GlobalLoadingScreen } from './providers';
-import { BizConsoleRoutes } from './routes/BizConsoleRoutes';
+import { BizConsoleThemeProvider, DateLocalizationProvider, DialogProvider, GlobalLoadingScreen } from './providers';
+import { bizConsoleRoutes } from './routes/BizConsoleRoutes';
 import * as MODE from '@moderepo/bizstack-console-sdk';
-import {
-    APIError,
-    ModeAPI,
-    useAuthenticationStore,
-    useProjectProfileStore,
-    LoadingScreen,
-    AuthTokenType,
-    bizConsoleLightTheme,
-} from '@moderepo/bizstack-console-sdk';
+import { APIError, ModeAPI, useAuthenticationStore, useProjectProfileStore, LoadingScreen, AuthTokenType } from '@moderepo/bizstack-console-sdk';
 import { addLicense } from '@amcharts/amcharts5';
 import { ErrorBoundary } from 'react-error-boundary';
 import { APIProvider } from '@vis.gl/react-google-maps';
@@ -197,41 +189,39 @@ export const App = () => {
         );
     }
 
-    if (googleMapsApiKey === undefined || googleMapsApiKey === '') {
-        return (
-            <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    minHeight: '100vh',
-                    flexDirection: 'column',
-                    fontSize: 40,
-                }}
-            >
-                <Box>Google Maps API key is required.</Box>
-                <Box>
-                    Please update your <b>VITE_GOOGLE_MAPS_API_KEY</b> in .env.local
-                </Box>
-            </Box>
-        );
-    }
-
     return (
         <ErrorBoundary fallback={<LoadingScreen open={true} />} onError={onErrorHandler}>
             <DateLocalizationProvider>
-                <APIProvider apiKey={googleMapsApiKey}>
-                    <ThemeProvider theme={bizConsoleLightTheme}>
-                        <BrowserRouter>
-                            <CssBaseline>
-                                <GlobalLoadingScreen />
-                                <DialogProvider />
-                                <BizConsoleRoutes />
-                            </CssBaseline>
-                        </BrowserRouter>
-                    </ThemeProvider>
+                <APIProvider apiKey={googleMapsApiKey ?? ''}>
+                    <BizConsoleThemeProvider>
+                        <RouterProvider router={routesWrapper} fallbackElement={<p>Loading...</p>} />
+                    </BizConsoleThemeProvider>
                 </APIProvider>
             </DateLocalizationProvider>
         </ErrorBoundary>
     );
 };
+
+const routesWrapper = ReactRouterDOM.createBrowserRouter([
+    {
+        element: (
+            <ErrorBoundary
+                fallback={<LoadingScreen open={true} />}
+                onError={(error: Error, info: React.ErrorInfo) => {
+                    if (error.message.includes('Failed to fetch dynamically imported module')) {
+                        window.location.reload();
+                    } else {
+                        console.error(error, info);
+                    }
+                }}
+            >
+                <CssBaseline>
+                    <GlobalLoadingScreen />
+                    <DialogProvider />
+                    <Outlet />
+                </CssBaseline>
+            </ErrorBoundary>
+        ),
+        children: bizConsoleRoutes,
+    },
+]);
