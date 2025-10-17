@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import { Link, Route, RouteObject, Routes, useParams, useSearchParams } from 'react-router-dom';
-import { Box } from '@mui/material';
+import { Link, Route, RouteObject, Routes, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Box, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { DEFAULT_ROUTE_PATHS, LoadingScreen, useGetParamValueFromRouteParamsAsNumber } from '@moderepo/bizstack-console-sdk';
 import { MyCustomAccountPage } from '../../my-account-components/MyCustomAccountPage';
 import { MyAccountInfoComponent } from '../../my-account-components/MyAccountInfoComponent';
@@ -23,20 +23,38 @@ const PageNotFoundPage: React.FC = () => {
     );
 };
 
-const Sidebar = () => {
+const drawerWidth = 200;
+
+const CustomDrawer = () => {
     const projectId = useGetParamValueFromRouteParamsAsNumber('projectId');
+    const navigate = useNavigate();
 
     return (
-        <Box sx={{ width: '200px', p: 2, display: 'flex', flexDirection: 'column', gap: 1, borderRight: '1px solid gray' }}>
-            <Link to={`/projects/${projectId}/custom/my_custom_page/`}>my_custom_page</Link>
-            <Link to={`/projects/${projectId}/custom/my_custom_page_2/100000?startTime=946684800000`}>my_custom_page_2</Link>
-        </Box>
+        <Drawer
+            variant="permanent"
+            open={true}
+            sx={{
+                flexShrink: 0,
+                width: drawerWidth,
+            }}
+        >
+            <List>
+                <ListItem>
+                    <ListItemButton onClick={() => navigate(`/projects/${projectId}/custom/my_custom_page/`)}>
+                        <ListItemText>my_custom_page</ListItemText>
+                    </ListItemButton>
+                </ListItem>
+                <ListItem>
+                    <ListItemButton onClick={() => navigate(`/projects/${projectId}/custom/my_custom_page_2/100000?startTime=946684800000`)}>
+                        <ListItemText>my_custom_page2</ListItemText>
+                    </ListItemButton>
+                </ListItem>
+            </List>
+        </Drawer>
     );
 };
 
 const MyCustomPage1Route: React.FC = () => {
-    const params = useParams();
-    console.log({ params });
     return <MyAccountInfoComponent />;
 };
 
@@ -57,8 +75,9 @@ export const bizConsoleRoutes: RouteObject[] = [
         path: DEFAULT_ROUTE_PATHS.PROJECT_$projectId_CUSTOM,
         element: (
             <Box sx={{ display: 'flex', height: '100%' }}>
-                <Sidebar />
-                <Box component="main" sx={{ flex: 1, overflow: 'auto' }}>
+                <CustomDrawer />
+
+                <Box>
                     <Routes>
                         <Route
                             path={`my_custom_page`}
