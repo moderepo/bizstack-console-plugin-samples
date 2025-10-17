@@ -4,11 +4,20 @@ import { bizstackConsoleSDKTransform } from './scripts/modify-sdk';
 
 // https://vite.dev/config/
 export default defineConfig({
+    // Need to modify the BizStack Console SDK.
+    optimizeDeps: { exclude: ['@moderepo/bizstack-console-sdk'] },
     server: {
         port: 5001,
     },
     plugins: [
         react(),
+        {
+            name: 'patch-bizstack-console-sdk',
+            enforce: 'pre',
+            transform(code, id) {
+                return bizstackConsoleSDKTransform(code, id);
+            },
+        },
     ],
     resolve: {
         alias: {
