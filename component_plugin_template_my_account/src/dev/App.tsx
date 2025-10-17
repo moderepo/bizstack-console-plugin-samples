@@ -16,7 +16,13 @@ if (import.meta.env.VITE_AMCHARTS_LICENSE !== undefined) {
     addLicense(import.meta.env.VITE_AMCHARTS_LICENSE);
 }
 
-ModeAPI.initialize('https://api-dev.tinkermode.dev');
+type ModeApiGlobal = typeof globalThis & { __MODE_API_INITIALIZED__?: boolean };
+const modeApiGlobal = globalThis as ModeApiGlobal;
+
+if (!modeApiGlobal.__MODE_API_INITIALIZED__) {
+    ModeAPI.initialize('https://api-dev.tinkermode.dev');
+    modeApiGlobal.__MODE_API_INITIALIZED__ = true;
+}
 
 export const App = () => {
     const authToken = import.meta.env.VITE_USER_AUTH_TOKEN;
@@ -191,13 +197,13 @@ export const App = () => {
 
     return (
         <ErrorBoundary fallback={<LoadingScreen open={true} />} onError={onErrorHandler}>
-            <DateLocalizationProvider>
-                <APIProvider apiKey={googleMapsApiKey ?? ''}>
-                    <BizConsoleThemeProvider>
+            <APIProvider apiKey={googleMapsApiKey ?? ''}>
+                <BizConsoleThemeProvider>
+                    <DateLocalizationProvider>
                         <RouterProvider router={routesWrapper} fallbackElement={<p>Loading...</p>} />
-                    </BizConsoleThemeProvider>
-                </APIProvider>
-            </DateLocalizationProvider>
+                    </DateLocalizationProvider>
+                </BizConsoleThemeProvider>
+            </APIProvider>
         </ErrorBoundary>
     );
 };
