@@ -1,8 +1,9 @@
 import { Suspense } from 'react';
-import { Link, Route, RouteObject, Routes, useParams } from 'react-router-dom';
+import { Link, Route, RouteObject, Routes, useParams, useSearchParams } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { DEFAULT_ROUTE_PATHS, LoadingScreen, useGetParamValueFromRouteParamsAsNumber } from '@moderepo/bizstack-console-sdk';
 import { MyCustomAccountPage } from '../../my-account-components/MyCustomAccountPage';
+import { MyAccountInfoComponent } from '../../my-account-components/MyAccountInfoComponent';
 
 const PageNotFoundPage: React.FC = () => {
     return (
@@ -17,7 +18,7 @@ const PageNotFoundPage: React.FC = () => {
             }}
         >
             <Box>404 Page Not Found</Box>
-            <Box>Please open {'http://localhost:5001/projects/{projectId}/custom/my_custom_route_2/{entityId}'}</Box>
+            <Box>Please open {'http://localhost:5001/projects/{projectId}/custom/my_custom_page'}</Box>
         </Box>
     );
 };
@@ -26,15 +27,29 @@ const Sidebar = () => {
     const projectId = useGetParamValueFromRouteParamsAsNumber('projectId');
 
     return (
-        <Box sx={{ width: '200px', p: 2, display: 'flex', flexDirection: 'column', gap: 1 }}>
-            <Link to={`/projects/${projectId}/custom/my_custom_route_2/{entityId}`}>my_custom_route_2</Link>
+        <Box sx={{ width: '200px', p: 2, display: 'flex', flexDirection: 'column', gap: 1, borderRight: '1px solid gray' }}>
+            <Link to={`/projects/${projectId}/custom/my_custom_page/`}>my_custom_page</Link>
+            <Link to={`/projects/${projectId}/custom/my_custom_page_2/100000?startTime=946684800000`}>my_custom_page_2</Link>
         </Box>
     );
 };
 
-const MyCustomAccountPageRoute: React.FC = () => {
+const MyCustomPage1Route: React.FC = () => {
     const params = useParams();
-    return <MyCustomAccountPage projectId={params.projectId !== undefined ? Number(params.projectId) : Number.NaN} />;
+    console.log({ params });
+    return <MyAccountInfoComponent />;
+};
+
+const MyCustomPage2Route: React.FC = () => {
+    const params = useParams();
+    const [searchParams] = useSearchParams();
+    return (
+        <MyCustomAccountPage
+            projectId={params.projectId !== undefined ? Number(params.projectId) : Number.NaN}
+            entityId={params.entityId !== undefined ? Number(params.entityId) : undefined}
+            startTime={Number(searchParams.get('startTime'))}
+        />
+    );
 };
 
 export const bizConsoleRoutes: RouteObject[] = [
@@ -46,10 +61,18 @@ export const bizConsoleRoutes: RouteObject[] = [
                 <Box component="main" sx={{ flex: 1, overflow: 'auto' }}>
                     <Routes>
                         <Route
-                            path={`my_custom_route_2/:entityId`}
+                            path={`my_custom_page`}
                             element={
                                 <Suspense fallback={<LoadingScreen open={true} />}>
-                                    <MyCustomAccountPageRoute />
+                                    <MyCustomPage1Route />
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path={`my_custom_page_2/:entityId`}
+                            element={
+                                <Suspense fallback={<LoadingScreen open={true} />}>
+                                    <MyCustomPage2Route />
                                 </Suspense>
                             }
                         />
