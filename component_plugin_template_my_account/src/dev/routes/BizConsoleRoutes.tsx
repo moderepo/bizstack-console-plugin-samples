@@ -40,7 +40,7 @@ const CustomDrawer = () => {
         >
             <List>
                 <ListItem>
-                    <ListItemButton onClick={() => navigate(`/projects/${projectId}/custom/my_custom_page/`)}>
+                    <ListItemButton onClick={() => navigate(`/projects/${projectId}/custom/my_custom_page`)}>
                         <ListItemText>my_custom_page</ListItemText>
                     </ListItemButton>
                 </ListItem>
