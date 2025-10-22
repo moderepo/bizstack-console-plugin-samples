@@ -25,7 +25,7 @@ const PageNotFoundPage: React.FC = () => {
             }}
         >
             <Box>404 Page Not Found</Box>
-            <Box>Please open {'http://localhost:5001/projects/{projectId}/custom/my_custom_page'}</Box>
+            <Box>Please open {'http://localhost:5000/projects/{projectId}/custom/widget1'}</Box>
         </Box>
     );
 };
@@ -47,13 +47,13 @@ const CustomDrawer = () => {
         >
             <List>
                 <ListItem>
-                    <ListItemButton onClick={() => navigate(`/projects/${projectId}/custom/my_custom_page`)}>
-                        <ListItemText>my_custom_page</ListItemText>
+                    <ListItemButton onClick={() => navigate(`/projects/${projectId}/custom/widget1`)}>
+                        <ListItemText>widget1</ListItemText>
                     </ListItemButton>
                 </ListItem>
                 <ListItem>
-                    <ListItemButton onClick={() => navigate(`/projects/${projectId}/custom/my_custom_page_2/100000?startTime=946684800000`)}>
-                        <ListItemText>my_custom_page2</ListItemText>
+                    <ListItemButton onClick={() => navigate(`/projects/${projectId}/custom/widget2`)}>
+                        <ListItemText>widget2</ListItemText>
                     </ListItemButton>
                 </ListItem>
             </List>
@@ -81,7 +81,7 @@ const mockComponentsManager: IEntityViewComponentsManager = {
     },
 };
 
-const MyCustomPage1Route: React.FC = () => {
+const Widget1Route: React.FC = () => {
     const params = useParams();
     const loggedInUserId = useAuthenticationStore((state) => state.authInfo?.userId ?? state.loggedInUser?.id ?? 0);
 
@@ -99,7 +99,7 @@ const MyCustomPage1Route: React.FC = () => {
     );
 };
 
-const MyCustomPage2Route: React.FC = () => {
+const Widget2Route: React.FC = () => {
     const params = useParams();
     const loggedInUserId = useAuthenticationStore((state) => state.authInfo?.userId ?? state.loggedInUser?.id ?? 0);
 
@@ -127,18 +127,18 @@ export const bizConsoleRoutes: RouteObject[] = [
                 <Box>
                     <Routes>
                         <Route
-                            path={`my_custom_page`}
+                            path={'widget1'}
                             element={
                                 <Suspense fallback={<LoadingScreen open={true} />}>
-                                    <MyCustomPage1Route />
+                                    <Widget1Route />
                                 </Suspense>
                             }
                         />
                         <Route
-                            path={`my_custom_page_2/:entityId`}
+                            path={'widget2'}
                             element={
                                 <Suspense fallback={<LoadingScreen open={true} />}>
-                                    <MyCustomPage2Route />
+                                    <Widget2Route />
                                 </Suspense>
                             }
                         />
