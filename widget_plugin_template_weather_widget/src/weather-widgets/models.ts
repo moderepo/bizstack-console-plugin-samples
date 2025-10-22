@@ -70,6 +70,9 @@ export const createInitialTemperatureWidgetCustomSettings = (): TemperatureWidge
     return {
         title: '',
         location: { lat: 35.78037262595157, lng: 139.78598775403952 },
+        containerSettings: {
+            enabled: true
+        }
     };
 };
 
@@ -120,6 +123,9 @@ export const createInitialHumidityWidgetCustomSettings = (): HumidityWidgetCusto
     return {
         title: '',
         location: { lat: 35.78037262595157, lng: 139.78598775403952 },
+        containerSettings: {
+            enabled: true
+        }
     };
 };
 
