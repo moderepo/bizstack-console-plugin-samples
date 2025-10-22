@@ -200,6 +200,9 @@ export const isXYChartWidgetCustomSettings = (
 export const createInitialXYChartWidgetCustomSettings = (): XYChartWidgetCustomSettings => {
     return {
         dataSourcesSettings: [],
+        containerSettings: {
+            enabled: true
+        }
     };
 };
 
