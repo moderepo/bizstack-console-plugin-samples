@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Link, Route, RouteObject, Routes, useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Route, RouteObject, Routes, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { Box, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { DEFAULT_ROUTE_PATHS, LoadingScreen, useGetParamValueFromRouteParamsAsNumber } from '@moderepo/bizstack-console-sdk';
 import { MyCustomAccountPage } from '../../my-account-components/MyCustomAccountPage';
