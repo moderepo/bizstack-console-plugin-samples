@@ -88,7 +88,7 @@ export const bizstackConsoleSDKTransform = (code: string, id: string) => {
             // }
             // ```
 
-            const pattern = new RegExp(`^function ${useParamsName}\(\).+?^}`, 'ms');
+            const pattern = new RegExp(`^function ${useParamsName}().+?^}`, 'ms');
             code = code.replace(
                 pattern,
                 `
