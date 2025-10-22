@@ -10,6 +10,7 @@ import { APIError, ModeAPI, useAuthenticationStore, useProjectProfileStore, Load
 import { addLicense } from '@amcharts/amcharts5';
 import { ErrorBoundary } from 'react-error-boundary';
 import { APIProvider } from '@vis.gl/react-google-maps';
+import { getAllUserResourceInstancesPermissions } from './appUtils';
 
 // Configure amcharts library
 if (import.meta.env.VITE_AMCHARTS_LICENSE !== undefined) {
@@ -86,6 +87,11 @@ export const App = () => {
                 throw user;
             }
 
+            const permissions = await getAllUserResourceInstancesPermissions(publicAlias, authInfo);
+            if (permissions instanceof APIError) {
+                throw permissions;
+            }
+
             // Project profile is cached in local storage therefore we don't need to load it. However, it is better that we RELOAD at least once
             // when the app loads so that we have a new copy of the project profile in case the project profile changed e.g. project name, alias, etc.
             const projectProfile = await MODE.ModeAPI.getInstance().getProjectProfile(publicAlias);
@@ -93,7 +99,7 @@ export const App = () => {
                 throw projectProfile;
             }
 
-            return { authInfo, user, projectProfile };
+            return { authInfo, user, permissions, projectProfile };
         },
         [loggedInProjects, projectAlias]
     );
@@ -103,14 +109,9 @@ export const App = () => {
         if (authToken !== undefined && !cachedAuthTokenValidated) {
             (async () => {
                 try {
-                    const { authInfo, user, projectProfile } = await validateAuthToken(authToken);
+                    const { authInfo, user, permissions, projectProfile } = await validateAuthToken(authToken);
                     // We have all the data we needed, mark the user as logged in.
-                    await authActions.setIsLoggedIn(
-                        { token: authToken, userId: user.id },
-                        authInfo,
-                        user,
-                        {} as MODE.AllUserResourceInstancesPermissions
-                    );
+                    await authActions.setIsLoggedIn({ token: authToken, userId: user.id }, authInfo, user, permissions);
                     await projectProfileAction.setProjectProfile(projectProfile.publicAlias, projectProfile);
                     // Because we might have made API call to fetch projectProfile directly, we need to add it to the store.
                     await projectProfileAction.addLoggedInProject(projectProfile);
