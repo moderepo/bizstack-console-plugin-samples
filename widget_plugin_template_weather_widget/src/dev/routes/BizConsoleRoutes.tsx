@@ -63,6 +63,9 @@ const CustomDrawer = () => {
 
 const mockComponentsManager: IEntityViewComponentsManager = {
     hasLoadedDataForAllComponents: () => false,
+    disableDragAndDrop: () => {},
+    enableDragAndDrop: () => {},
+    isDragAndDropDisabled: false,
     removeComponent: (compId: string) => {
         void compId;
     },
