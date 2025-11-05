@@ -6,6 +6,7 @@ import {
     DEFAULT_WIDGET_STYLE_SETTING_TABS,
     CUSTOM_SETTINGS_STYLE_PARAM,
     CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM,
+    CUSTOM_SETTINGS_CONTAINER_SETTINGS_PARAM,
 } from '@moderepo/bizstack-console-sdk';
 import { TEMPERATURE_UNIT } from './models';
 
@@ -62,7 +63,7 @@ export const temperatureWidgetCustomSettingsSchema: BaseEntityViewCompCustomSett
         },
         {
             ...DEFAULT_WIDGET_STYLE_SETTING_TABS,
-            params: [CUSTOM_SETTINGS_STYLE_PARAM],
+            params: [CUSTOM_SETTINGS_CONTAINER_SETTINGS_PARAM, CUSTOM_SETTINGS_STYLE_PARAM],
         },
     ],
 };
@@ -96,7 +97,7 @@ export const humidityWidgetCustomSettingsSchema: BaseEntityViewCompCustomSetting
         },
         {
             ...DEFAULT_WIDGET_STYLE_SETTING_TABS,
-            params: [CUSTOM_SETTINGS_STYLE_PARAM],
+            params: [CUSTOM_SETTINGS_CONTAINER_SETTINGS_PARAM, CUSTOM_SETTINGS_STYLE_PARAM],
         },
     ],
 };

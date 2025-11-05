@@ -35,6 +35,7 @@ import {
     CHART_CUSTOM_SETTINGS_TARGET_RANGE_PARAM,
     CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_VALUE_GROUP_NAME_PARAM,
     CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM,
+    CUSTOM_SETTINGS_CONTAINER_SETTINGS_PARAM,
 } from '@moderepo/bizstack-console-sdk';
 
 // A copy of CUSTOM_SETTINGS_DATA_SOURCE_NUMERIC_METRIC_VIEW_SETTINGS_PARAM but with additional params for XY Chart
@@ -125,6 +126,7 @@ export const xyChartWidgetCustomSettingsSchema: BaseEntityViewCompCustomSettings
         {
             ...DEFAULT_WIDGET_STYLE_SETTING_TABS,
             params: [
+                CUSTOM_SETTINGS_CONTAINER_SETTINGS_PARAM,
                 XY_CHART_CUSTOM_SETTINGS_GLOBAL_NUMERIC_METRIC_VIEW_SETTINGS_PARAM,
                 CHART_GLOBAL_VIEW_SETTINGS_PARAM,
                 { ...CUSTOM_SETTINGS_STYLE_PARAM, isAdvancedSettings: true },
