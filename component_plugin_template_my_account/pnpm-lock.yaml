@@ -64,8 +64,8 @@ importers:
         version: 4.5.7(@types/react@18.3.26)(immer@10.1.3)(react@18.3.1)
     devDependencies:
       '@moderepo/bizstack-console-sdk':
-        specifier: ^1.23.0
-        version: 1.23.0(dc2ad2ea6e07cfc815e7ec3bce2129b9)
+        specifier: ^1.25.0
+        version: 1.25.0(dc2ad2ea6e07cfc815e7ec3bce2129b9)
       '@originjs/vite-plugin-federation':
         specifier: ^1.3.5
         version: 1.4.1
@@ -864,8 +864,8 @@ packages:
   '@microsoft/tsdoc@0.14.2':
     resolution: {integrity: sha512-9b8mPpKrfeGRuhFH5iO1iwCLeIIsV6+H1sRfxbkoGXIyQE2BTsPd9zqSqQJ+pv5sJ/hT5M1zvOFL02MnEezFug==}
 
-  '@moderepo/bizstack-console-sdk@1.23.0':
-    resolution: {integrity: sha512-PqwCukflf8gxY6P3gSwLuq+IcscBsmESDyYNyOOVfEkKLSvoHmqHvSxYk6I8j/bHlnQXsYp41Q3mP/R/cI1oLQ==, tarball: https://npm.pkg.github.com/download/@moderepo/bizstack-console-sdk/1.23.0/ad604a0e87ad29b32b9be48b21e0d8dea95ea0e0}
+  '@moderepo/bizstack-console-sdk@1.25.0':
+    resolution: {integrity: sha512-WfSVUz2Ag3E0HT7ctOGuAVmXY0Ky9NXKkCx8dE75up8g9DCyFV6fyvZfaSSCV9ynklWPx2e5y/MOI6WSk1v1cw==, tarball: https://npm.pkg.github.com/download/@moderepo/bizstack-console-sdk/1.25.0/55c6730b9030e55ba6b6d18ccbe41011fb3d6b20}
 
   '@modern-js/node-bundle-require@2.65.1':
     resolution: {integrity: sha512-XpEkciVEfDbkkLUI662ZFlI9tXsUQtLXk4NRJDBGosNnk9uL2XszmC8sKsdCSLK8AYuPW2w6MTVWuJsOR0EU8A==}
@@ -3220,6 +3220,7 @@ packages:
   keygrip@1.1.0:
     resolution: {integrity: sha512-iYSchDJ+liQ8iwbSI2QqsQOvqv58eJCEanyJPJi+Khyu8smkcKSFUCbPwzFcL7YVtZ6eONjqRX/38caJ7QjRAQ==}
     engines: {node: '>= 0.6'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -5430,7 +5431,7 @@ snapshots:
 
   '@microsoft/tsdoc@0.14.2': {}
 
-  '@moderepo/bizstack-console-sdk@1.23.0(dc2ad2ea6e07cfc815e7ec3bce2129b9)':
+  '@moderepo/bizstack-console-sdk@1.25.0(dc2ad2ea6e07cfc815e7ec3bce2129b9)':
     dependencies:
       '@amcharts/amcharts5': 5.14.2
       '@amcharts/amcharts5-fonts': 5.0.1
