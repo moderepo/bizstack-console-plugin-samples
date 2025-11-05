@@ -289,6 +289,9 @@ export const isGaugeWidgetCustomSettings = (obj: unknown, errorLogger?: SubSetti
 export const createInitialGaugeWidgetCustomSettings = (): GaugeWidgetCustomSettings => {
     return {
         dataSourcesSettings: [],
+        containerSettings: {
+            enabled: true
+        }
     };
 };
 
