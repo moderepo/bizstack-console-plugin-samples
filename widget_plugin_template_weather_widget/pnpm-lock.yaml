@@ -50,8 +50,8 @@ importers:
         version: 4.5.7(@types/react@18.3.26)(immer@10.2.0)(react@18.3.1)
     devDependencies:
       '@moderepo/bizstack-console-sdk':
-        specifier: ^1.25.0
-        version: 1.25.0(0375fb55db6ab4ed64eb6ec0e03cab0c)
+        specifier: ^1.26.0
+        version: 1.26.0(0375fb55db6ab4ed64eb6ec0e03cab0c)
       '@originjs/vite-plugin-federation':
         specifier: ^1.4.1
         version: 1.4.1
@@ -850,8 +850,8 @@ packages:
   '@microsoft/tsdoc@0.14.2':
     resolution: {integrity: sha512-9b8mPpKrfeGRuhFH5iO1iwCLeIIsV6+H1sRfxbkoGXIyQE2BTsPd9zqSqQJ+pv5sJ/hT5M1zvOFL02MnEezFug==}
 
-  '@moderepo/bizstack-console-sdk@1.25.0':
-    resolution: {integrity: sha512-WfSVUz2Ag3E0HT7ctOGuAVmXY0Ky9NXKkCx8dE75up8g9DCyFV6fyvZfaSSCV9ynklWPx2e5y/MOI6WSk1v1cw==, tarball: https://npm.pkg.github.com/download/@moderepo/bizstack-console-sdk/1.25.0/55c6730b9030e55ba6b6d18ccbe41011fb3d6b20}
+  '@moderepo/bizstack-console-sdk@1.26.0':
+    resolution: {integrity: sha512-BQWNtN+fmGtRoDPM1AxiB+vnxcYsoY3lmWngFmoKaPRIuVlEAddXtLdjyE8hBsK9kwdyBDI0KppylzQQ7N3kaA==, tarball: https://npm.pkg.github.com/download/@moderepo/bizstack-console-sdk/1.26.0/d2fdf4f9338e11ead50c13edcb1a897029b0f336}
 
   '@modern-js/node-bundle-require@2.65.1':
     resolution: {integrity: sha512-XpEkciVEfDbkkLUI662ZFlI9tXsUQtLXk4NRJDBGosNnk9uL2XszmC8sKsdCSLK8AYuPW2w6MTVWuJsOR0EU8A==}
@@ -5442,7 +5442,7 @@ snapshots:
 
   '@microsoft/tsdoc@0.14.2': {}
 
-  '@moderepo/bizstack-console-sdk@1.25.0(0375fb55db6ab4ed64eb6ec0e03cab0c)':
+  '@moderepo/bizstack-console-sdk@1.26.0(0375fb55db6ab4ed64eb6ec0e03cab0c)':
     dependencies:
       '@amcharts/amcharts5': 5.14.3
       '@amcharts/amcharts5-fonts': 5.0.1
