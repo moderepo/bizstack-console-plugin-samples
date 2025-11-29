@@ -52,8 +52,10 @@ registry=https://registry.npmjs.org
 
 > [!CAUTION]
 > As of November 2024, please install MUI v5. MUI v6 is not supported yet.
-> `npm install @mui/material@5 @mui/styled-engine-sc@5 styled-components@5`
-> `npm i -D @types/styled-components`
+> ```shell
+> npm install @mui/material@5 @mui/styled-engine-sc@5 styled-components@5
+> npm i -D @types/styled-components
+> ```
 
 ### Delete unnecessary files (Optional)
 Because we use Vite to create a new React project, it will automatically create a simple app with a welcome page. Since this is a Plugin
