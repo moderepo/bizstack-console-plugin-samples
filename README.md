@@ -40,33 +40,36 @@ registry=https://registry.npmjs.org
 
 ### Install required libraries
 > [!IMPORTANT]  
-> For security reasons, please run `npm install` with `--ignore-scripts` option to prevent execution of any script.
+> For security reasons, please run `npm install` with `--ignore-scripts` option to prevent execution of any scripts.
+
 - Run `npm i --ignore-scripts -D @moderepo/bizstack-console-sdk` to install `@moderepo/bizstack-console-sdk`
 - Run `npm i --ignore-scripts -D @originjs/vite-plugin-federation` to install Module Federation plugin for Vite since we are using Vite instead of Webpack
 - Run `npm i --ignore-scripts zustand` to install Zustand.
 - Install Material UI v5
   - This step is only required if the plugin needs to use MUI. Technically, the plugin can use any CSS library. However, to have the
     plugin UI integrate smoothly with BizStack Console, it is recommended that the plugin also use MUI v5. To install MUI, please follow the instruction
-    [here](https://v5.mui.com/material-ui/getting-started/installation/). Note that MUI recommend using @emotion style engine. However, if
+    [here](https://v5.mui.com/material-ui/getting-started/installation/). Note that MUI recommend using `@emotion` style engine. However, if
     you want to use styled-component, please follow the instruction on how to use styled-component style engine. Also, using styled-component
     style engine will require additional setup. Please look at the example plugin's `tsconfig.json` and `vite.config.ts` for example.
 - Install other libraries as needed e.g. eslint, prettier, etc...
 
 > [!CAUTION]
 > As of November 2024, please install MUI v5. MUI v6 is not supported yet.
-> `npm install --ignore-scripts @mui/material@5 @mui/styled-engine-sc@5 styled-components@5`
-> `npm i --ignore-scripts -D @types/styled-components`
+> ```
+> npm install --ignore-scripts @mui/material@5 @mui/styled-engine-sc@5 styled-components@5
+> npm i --ignore-scripts -D @types/styled-components`
+> ```
 
 ### Delete unnecessary files (Optional)
 Because we use Vite to create a new React project, it will automatically create a simple app with a welcome page. Since this is a Plugin
 project, we don't need most of these files therefore we can clean up by deleting them. These are some of the files that can be deleted. Note
 that this step is optional.
-- src/App.tsx
-- src/App.css
-- src/index.css
-- src/main.tsx
-- src/vite-env.d.ts
-- index.html (You might need to create a blank index.html to get around a compile error because of missing index.html)
+- `src/App.tsx`
+- `src/App.css`
+- `src/index.css`
+- `src/main.tsx`
+- `src/vite-env.d.ts`
+- `index.html` (You might need to create a blank index.html to get around a compile error because of missing index.html)
 
 ## Configure the project
 ### Update `vite.config.ts`
