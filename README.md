@@ -39,9 +39,12 @@ registry=https://registry.npmjs.org
 ```
 
 ### Install required libraries
-- Run `npm i -D @moderepo/bizstack-console-sdk` to install `@moderepo/bizstack-console-sdk`
-- Run `npm i -D @originjs/vite-plugin-federation` to install Module Federation plugin for Vite since we are using Vite instead of Webpack
-- Run `npm i zustand` to install Zustand.
+> [!IMPORTANT]  
+> For security reasons, please run `npm install` with `--ignore-scripts` option to prevent execution of any scripts.
+
+- Run `npm i --ignore-scripts -D @moderepo/bizstack-console-sdk` to install `@moderepo/bizstack-console-sdk`
+- Run `npm i --ignore-scripts -D @originjs/vite-plugin-federation` to install Module Federation plugin for Vite since we are using Vite instead of Webpack
+- Run `npm i --ignore-scripts zustand` to install Zustand.
 - Install Material UI v5
   - This step is only required if the plugin needs to use MUI. Technically, the plugin can use any CSS library. However, to have the
     plugin UI integrate smoothly with BizStack Console, it is recommended that the plugin also use MUI v5. To install MUI, please follow the instruction
@@ -53,8 +56,8 @@ registry=https://registry.npmjs.org
 > [!CAUTION]
 > As of November 2024, please install MUI v5. MUI v6 is not supported yet.
 > ```shell
-> npm install @mui/material@5 @mui/styled-engine-sc@5 styled-components@5
-> npm i -D @types/styled-components
+> npm install --ignore-scripts @mui/material@5 @mui/styled-engine-sc@5 styled-components@5`
+> npm i --ignore-scripts -D @types/styled-components`
 > ```
 
 ### Delete unnecessary files (Optional)
