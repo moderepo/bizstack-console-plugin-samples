@@ -2,15 +2,17 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import federation from '@originjs/vite-plugin-federation';
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
     server: {
         port: 5000,
+        origin: "http://localhost:5000"
     },
     preview: {
         port: 5000,
         cors: true,
     },
+    base: "http://localhost:5000/",
     plugins: [
         react(),
         federation({
