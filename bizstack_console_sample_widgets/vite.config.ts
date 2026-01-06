@@ -1,16 +1,21 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import federation from '@originjs/vite-plugin-federation';
+import { federation } from '@module-federation/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    // The URL of the remote app
+    base: 'http://localhost:5002/',
     server: {
         port: 5002,
+        // The URl of the remote required for DEV mode
+        origin: 'http://localhost:5002/',
     },
     preview: {
         port: 5002,
         cors: true,
     },
+
     plugins: [
         react(),
         federation({
@@ -38,6 +43,12 @@ export default defineConfig({
                 'i18next',
                 'react-i18next',
             ],
+
+            // To generate a manifest file and use it instead of the "remoteEntry.js" file. This is the new standard for Module Federation 2.0.
+            // Set "manifest: true" if we you want to use the default manifest file name, "mf-manifest.json"
+            manifest: {
+                fileName: 'bizConsoleSampleWidgetsManifest.json', // To use a custom manifest file name instead of the default name "mf-manifest.json"
+            },
         }),
     ],
     resolve: {
