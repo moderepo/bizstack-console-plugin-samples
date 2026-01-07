@@ -8,6 +8,9 @@ export default defineConfig({
     base: 'http://localhost:5002/',
     server: {
         port: 5002,
+
+        // CORS settings for DEV mode doesn't work sometimes.
+        // If the following config doesn't work, developers can disable the browser's flag "chrome://flags/#local-network-access-check"
         origin: 'http:localhost:5002',
         cors: true,
         headers: {
