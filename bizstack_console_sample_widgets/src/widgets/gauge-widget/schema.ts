@@ -170,7 +170,7 @@ export const gaugeWidgetCustomSettingsSchema: BaseEntityViewCompCustomSettingsSc
                     ...CUSTOM_SETTINGS_DATA_AGE_LIMIT_PARAM,
                     description: '{{entity.view_comp.common.custom_settings.data_age_limit.description_with_time_range_note}}',
                 },
-                CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM
+                CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM,
             ],
         },
         {
