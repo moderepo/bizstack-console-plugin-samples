@@ -120,7 +120,7 @@ export const xyChartWidgetCustomSettingsSchema: BaseEntityViewCompCustomSettings
                     params: [CHART_TYPE_PARAM],
                 },
                 XY_CHART_CUSTOM_SETTINGS_DATA_SOURCES_SETTINGS_PARAM,
-                CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM
+                CUSTOM_SETTINGS_CUSTOM_TIME_CONTROL_PARAM,
             ],
         },
         {

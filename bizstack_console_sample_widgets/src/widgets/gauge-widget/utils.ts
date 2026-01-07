@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable indent */
-import { Root } from '@amcharts/amcharts5';
+import { array, color, percent, Root } from '@amcharts/amcharts5';
 import { DEFAULT_GAUGE_CHART_BAND_WIDTH, GaugeWidgetCustomSettings, GaugeWidgetNumericMetricViewSettings } from './models';
 import { Theme } from '@mui/material';
-import * as am5 from '@amcharts/amcharts5';
-import * as am5xy from '@amcharts/amcharts5/xy';
-import * as am5radar from '@amcharts/amcharts5/radar';
 import { EntityNumericMetric, ExtEntityNumericMetric } from '@moderepo/bizstack-console-sdk';
+import { AxisBullet, ValueAxis } from '@amcharts/amcharts5/xy';
+import * as am5radar from '@amcharts/amcharts5/radar';
 
 export const createGaugeChart = (params: {
     readonly id: string;
@@ -161,7 +160,7 @@ export const createGaugeChart = (params: {
     );
 
     const axisRenderer = am5radar.AxisRendererCircular.new(params.root, {
-        radius: am5.percent(100),
+        radius: percent(100),
         innerRadius: -bandWidth,
         strokeOpacity: 0,
         strokeWidth: 0,
@@ -178,7 +177,7 @@ export const createGaugeChart = (params: {
     });
 
     const axis = chart.xAxes.push(
-        am5xy.ValueAxis.new(params.root, {
+        ValueAxis.new(params.root, {
             maxDeviation: 0,
             min: minValue,
             max: maxValue,
@@ -194,7 +193,7 @@ export const createGaugeChart = (params: {
     axis.createAxisRange(rangeDataItem);
 
     // Create the bands
-    am5.array.each(allBands, function (data) {
+    array.each(allBands, function (data) {
         const axisRange = axis.createAxisRange(axis.makeDataItem({}));
 
         axisRange.setAll({
@@ -210,7 +209,7 @@ export const createGaugeChart = (params: {
                 : [data.color, 0.8];
         axisFill?.setAll({
             visible: true,
-            fill: am5.color(colorString),
+            fill: color(colorString),
             fillOpacity: opacity,
         });
     });
@@ -223,15 +222,15 @@ export const createGaugeChart = (params: {
         radius: -bandWidth - 2,
     });
     clockHand.pin.setAll({
-        fill: am5.color(params.theme.palette.text.secondary),
+        fill: color(params.theme.palette.text.secondary),
     });
     clockHand.hand.setAll({
-        fill: am5.color(params.theme.palette.text.secondary),
+        fill: color(params.theme.palette.text.secondary),
     });
 
     rangeDataItem.set(
         'bullet',
-        am5xy.AxisBullet.new(params.root, {
+        AxisBullet.new(params.root, {
             sprite: clockHand,
         })
     );
