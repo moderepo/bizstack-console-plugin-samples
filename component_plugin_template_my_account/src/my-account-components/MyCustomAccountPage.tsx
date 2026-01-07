@@ -9,8 +9,6 @@ import { CustomMapComponent } from './CustomMapComponent';
 
 export interface MyCustomAccountPageProps extends BaseBizConsoleCompProps {
     readonly projectId: number;
-    readonly entityId?: number;
-    readonly startTime?: number;
 }
 
 /**
@@ -40,15 +38,12 @@ export const isMyCustomAccountPageProps = (obj: unknown, errorLogger?: SubSettin
     return true;
 };
 
-export const MyCustomAccountPage: React.FC<MyCustomAccountPageProps> = ({ projectId, entityId, startTime }) => {
+export const MyCustomAccountPage: React.FC<MyCustomAccountPageProps> = ({ projectId }) => {
     return (
         <StyledMyAccountComponents.StyledMyCustomAccountPage>
             <Box sx={{ textAlign: 'center', paddingBottom: 5 }}>
                 <Typography variant="h2">This is a Custom Page</Typography>
                 <Typography variant="h5">Anything can go in here</Typography>
-                <Box>projectId: {projectId}</Box>
-                <Box>entityId: {entityId ?? 'undefined'}</Box>
-                <Box>startTime: {startTime ?? 'undefined'}</Box>
             </Box>
             <MyAccountInfoComponent />
             <MyAccountPrefComponent sx={{ marginTop: 2 }} projectId={projectId} />
