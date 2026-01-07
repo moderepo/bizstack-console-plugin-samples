@@ -8,6 +8,7 @@ export default defineConfig({
     base: 'http://localhost:5002/',
     server: {
         port: 5002,
+        origin: 'http:localhost:5002',
         cors: true,
         headers: {
             'Access-Control-Allow-Origin': '*', // Or the host's specific URL
