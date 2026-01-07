@@ -8,8 +8,13 @@ export default defineConfig({
     base: 'http://localhost:5002/',
     server: {
         port: 5002,
-        // The URl of the remote required for DEV mode
-        origin: 'http://localhost:5002/',
+        cors: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*', // Or the host's specific URL
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+            'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+        },
+        hmr: false, // Disables HMR entirely to fix the preamble error
     },
     preview: {
         port: 5002,
