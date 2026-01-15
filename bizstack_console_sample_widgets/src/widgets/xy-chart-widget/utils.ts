@@ -7,8 +7,8 @@ import {
     createAllYAxes,
     createChartCursor,
     createChartHorizontalScrollbar,
+    createChartLegend2,
     createChartVerticalScrollbar,
-    createXYChartLegend,
     createYAxisUniqueId,
     escapeChartDisplayValue,
     ExtEntityNumericMetric,
@@ -18,6 +18,7 @@ import {
     getDataStatistics,
     getEnforcedGroupYAxisBy,
     getMetricDisplayNameAndUnit,
+    HorizontalPosition,
     MultiMetricsDataPoint,
     TFunction,
     TimeRangeParams,
@@ -590,12 +591,13 @@ export const createXYChartWidgetChart = (params: {
     }
 
     // NOTE: Add legend AFTER creating the Series because the legend depends on the series
-    const legend = createXYChartLegend({
+    const { legend, legendContainer } = createChartLegend2({
         root: params.root,
         chart,
         theme: params.theme,
         legendSettings: params.customSettings.chartViewSettings?.legendSettings,
-    });
+        trans: params.trans,
+    }) ?? { legend: undefined, legendContainer: undefined };
 
     // Listen to legend on "click" event so we can remember the series' hidden/visible state and restore it later when we re-create the chart
     // IMPORTANT NOTE: We need to register the event BEFORE setting the data for the legend.
@@ -700,6 +702,41 @@ export const createXYChartWidgetChart = (params: {
             }
         });
     }
+
+    // When the widget is really small and if the legend is displayed on the left/right, there isn't much space left to display the actual chart.
+    // Therefore, we will automatically hide the legend if the widget is too small to show both the legend and the chart.
+    const updateLegendVisibility = () => {
+        if (
+            legendContainer &&
+            (params.customSettings.chartViewSettings?.legendSettings?.position === HorizontalPosition.LEFT ||
+                params.customSettings.chartViewSettings?.legendSettings?.position === HorizontalPosition.RIGHT)
+        ) {
+            // First, we need to show the legend so that we can compute the legend's width
+            legendContainer.setAll({
+                forceHidden: false,
+                visible: true,
+            });
+
+            // When we enable legend, it takes time for the legend to show up therefore we must wait a little bit before calculating the legend width
+            setTimeout(() => {
+                const widgetWidth = chart.width();
+                const legendContainerWidth = legendContainer.width();
+                const plotAreaWidth = chart.plotContainer.width();
+
+                // If the legend takes up more than 50% of the widget's width or if the plot area is less than 100px then hide the legend
+                if (legendContainerWidth > widgetWidth / 2 || plotAreaWidth < 100) {
+                    legendContainer.setAll({
+                        forceHidden: true,
+                    });
+                }
+            }, 200);
+        }
+    };
+
+    // Recompute the legend whenever the chart is resized.
+    chart.events.on('boundschanged', () => {
+        updateLegendVisibility();
+    });
 
     return chart;
 };
