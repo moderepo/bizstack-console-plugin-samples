@@ -1,54 +1,42 @@
 {
-    "name": "component_plugin_template",
-    "private": true,
-    "version": "0.0.0",
-    "type": "module",
-    "scripts": {
-        "dev": "vite --config vite.config.selfhosted.ts",
-        "build": "tsc && vite build",
-        "// Support dev server remote entry file": "https://github.com/originjs/vite-plugin-federation/issues/525",
-        "build:watch": "vite build --watch & vite preview",
-        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-        "preview": "vite preview"
-    },
-    "dependencies": {
-        "@amcharts/amcharts5": "^5.9.2",
-        "@deck.gl/google-maps": "^9.0.24",
-        "@mui/material": "^5.16.7",
-        "@mui/styled-engine-sc": "^5.14.12",
-        "@mui/x-date-pickers": "^7.2.0",
-        "@vis.gl/react-google-maps": "^0.8.3",
-        "date-fns": "^2.30.0",
-        "date-fns-tz": "^2.0.1",
-        "i18next": "^23.11.5",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-error-boundary": "^4.0.13",
-        "react-i18next": "^14.1.2",
-        "react-router": "^6.24.0",
-        "react-router-dom": "^6.24.0",
-        "styled-components": "^5.3.11",
-        "zustand": "^4.5.2"
-    },
-    "devDependencies": {
-        "@moderepo/bizstack-console-sdk": "^1.27.0",
-        "@originjs/vite-plugin-federation": "^1.3.5",
-        "@types/react": "^18.2.66",
-        "@types/react-dom": "^18.2.22",
-        "@types/styled-components": "^5.1.34",
-        "@typescript-eslint/eslint-plugin": "^7.2.0",
-        "@typescript-eslint/parser": "^7.2.0",
-        "@vitejs/plugin-react": "^4.2.1",
-        "eslint": "^8.57.0",
-        "eslint-plugin-react-hooks": "^4.6.0",
-        "eslint-plugin-react-refresh": "^0.4.6",
-        "prettier": "^3.6.2",
-        "typescript": "^5.2.2",
-        "vite": "^5.4.8"
-    },
-    "pnpm": {
-        "overrides": {
-            "@mui/system": "5.16.7"
-        }
-    }
+  "name": "component_plugin_template",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "// Support dev server remote entry file": "https://github.com/originjs/vite-plugin-federation/issues/525",
+    "build:watch": "vite build --watch & vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@deck.gl/google-maps": "^9.0.24",
+    "@mui/material": "^5.16.7",
+    "@mui/styled-engine-sc": "^5.14.12",
+    "i18next": "^23.11.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^14.1.2",
+    "react-router": "^6.24.0",
+    "react-router-dom": "^6.24.0",
+    "styled-components": "^5.3.11",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@moderepo/bizstack-console-sdk": "^1.27.0",
+    "@module-federation/vite": "^1.9.4",
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@types/styled-components": "^5.1.34",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.4.8"
+  }
 }

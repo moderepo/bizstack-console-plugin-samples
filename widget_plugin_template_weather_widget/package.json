@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "vite --config vite.config.selfhosted.ts",
+        "dev": "vite",
         "build": "tsc && vite build",
         "// Support dev server remote entry file": "https://github.com/originjs/vite-plugin-federation/issues/525",
         "build:watch": "vite build --watch & vite preview",
@@ -12,22 +12,16 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@amcharts/amcharts5": "^5.14.3",
         "@mui/material": "^5.16.7",
         "@mui/styled-engine-sc": "^5.14.12",
-        "@mui/x-date-pickers": "^7.2.0",
-        "@vis.gl/react-google-maps": "^0.8.3",
-        "date-fns": "^2.30.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "react-error-boundary": "^4.1.2",
-        "react-router-dom": "^6.30.1",
         "styled-components": "^5.3.11",
         "zustand": "^4.5.7"
     },
     "devDependencies": {
         "@moderepo/bizstack-console-sdk": "^1.27.0",
-        "@originjs/vite-plugin-federation": "^1.4.1",
+        "@module-federation/vite": "^1.9.4",
         "@types/react": "^18.3.26",
         "@types/react-dom": "^18.3.7",
         "@types/styled-components": "^5.1.35",
@@ -39,12 +33,6 @@
         "eslint-plugin-react-refresh": "^0.4.24",
         "prettier": "^3.6.2",
         "typescript": "^5.9.3",
-        "vite": "^5.4.21"
-    },
-    "pnpm": {
-        "overrides": {
-            "@mui/system": "5.16.7",
-            "@mui/x-date-pickers": "7.14.0"
-        }
+        "vite": "^5.4.8"
     }
 }

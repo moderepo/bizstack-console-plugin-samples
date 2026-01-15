@@ -11,7 +11,7 @@ export default defineConfig({
 
         // CORS settings for DEV mode doesn't work sometimes.
         // If the following config doesn't work, developers can disable the browser's flag "chrome://flags/#local-network-access-check"
-        origin: 'http:localhost:5002',
+        origin: 'http://localhost:5002',
         cors: true,
         headers: {
             'Access-Control-Allow-Origin': '*', // Or the host's specific URL
