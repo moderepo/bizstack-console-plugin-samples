@@ -23,7 +23,7 @@
     "devDependencies": {
         "@amcharts/amcharts5": "^5.10.11",
         "@amcharts/amcharts5-fonts": "^5.0.1",
-        "@moderepo/bizstack-console-sdk": "^1.28.0",
+        "@moderepo/bizstack-console-sdk": "^1.29.0",
         "@module-federation/vite": "^1.9.4",
         "@types/react": "^18.2.66",
         "@types/react-dom": "^18.2.22",
