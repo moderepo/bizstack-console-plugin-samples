@@ -48,8 +48,6 @@ export default defineConfig({
                 '@moderepo/bizstack-console-sdk',
                 'i18next',
                 'react-i18next',
-                // The following is required only when you want to implement a component that uses Google Maps.
-                '@vis.gl/react-google-maps',
             ],
 
             // To generate a manifest file and use it instead of the "remoteEntry.js" file. This is the new standard for Module Federation 2.0.

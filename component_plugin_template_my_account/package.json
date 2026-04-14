@@ -12,7 +12,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@deck.gl/google-maps": "^9.0.24",
     "@mui/material": "^5.16.7",
     "@mui/styled-engine-sc": "^5.14.12",
     "i18next": "^23.11.5",
@@ -25,7 +24,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@moderepo/bizstack-console-sdk": "^1.31.0",
+    "@moderepo/bizstack-console-sdk": "^1.32.0",
     "@module-federation/vite": "^1.9.4",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
