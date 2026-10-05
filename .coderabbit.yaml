@@ -1,0 +1,6 @@
+reviews:
+    auto_review: { enabled: true }
+
+    # Automatically approve once CodeRabbit's comments are resolved
+    # and no pre-merge checks are failing
+    request_changes_workflow: true
