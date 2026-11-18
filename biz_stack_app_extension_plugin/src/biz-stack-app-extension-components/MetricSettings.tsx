@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useCallback } from 'react';
-import { Box, IconButton, ListItemIcon } from '@mui/material';
+import { IconButton, ListItemIcon } from '@mui/material';
 import {
     Icons,
     isValidObjectValue,
@@ -53,14 +53,7 @@ export const isMetricSettingsProps = (obj: unknown, errorLogger?: SubSettingsErr
     return true;
 };
 
-export const MetricSettings: React.FC<MetricSettingsProps> = ({
-    projectId,
-    homeId,
-    bizstackAppId,
-    installationId,
-    onConfigCompleted,
-    targetEntityClass,
-}) => {
+export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onConfigCompleted, targetEntityClass }) => {
     const [isEditing, setIsEditing] = React.useState<boolean>(false);
     const { menuAnchorElement, menuOpened, onCloseMenu, onMenuAnchorElementClick } = useMenuControlStates(); // States for the ... menu
     const [selectedMetric, setSelectedMetric] = React.useState<EntityMetricInfo | undefined>(undefined);

@@ -4,9 +4,10 @@ import { federation } from '@module-federation/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: 'http://localhost:5003/',
+    base: '',
     server: {
         port: 5003,
+        strictPort: true,
 
         // CORS settings for DEV mode doesn't work sometimes.
         // If the following config doesn't work, developers can disable the browser's flag "chrome://flags/#local-network-access-check"
@@ -22,6 +23,7 @@ export default defineConfig({
     preview: {
         port: 5003,
         cors: true,
+        strictPort: true,
     },
     plugins: [
         react(),
