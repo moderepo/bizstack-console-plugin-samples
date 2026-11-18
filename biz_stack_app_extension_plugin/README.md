@@ -19,7 +19,7 @@ the plugin.
 ```shell
 npm run dev
 ```
-  Vite will start a web server for the project at port 5001, based on the config in `vite.config.ts`. Once the server is started, the plugin can
+  Vite will start a web server for the project at port 5003, based on the config in `vite.config.ts`. Once the server is started, the plugin can
   be accessed from these URLs http://localhost:5003/bizStackAppExtensionComponentsManifest.json or http://localhost:5003/bizStackAppExtensionComponents.js
 
 ### 2. Configure BizConsole to use the plugin from localhost.
