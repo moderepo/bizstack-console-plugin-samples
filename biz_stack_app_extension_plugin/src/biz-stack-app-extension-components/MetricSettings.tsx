@@ -15,6 +15,7 @@ import {
     EntityMetricValueType,
     BizStackAppExtensionConfigComponentProps,
     isBizStackAppExtensionConfigComponentProps,
+    isValidStringValue,
 } from '@moderepo/bizstack-console-sdk';
 import clsx from 'clsx';
 
@@ -37,14 +38,12 @@ export const isMetricSettingsProps = (obj: unknown, errorLogger?: SubSettingsErr
     }
 
     if (
-        !isValidNumberValue(
-            settings.projectId,
-            true,
+        !isValidStringValue(
+            settings.targetEntityClass,
+            false,
             false,
             undefined,
-            undefined,
-            undefined,
-            new SubSettingsErrorsLogger(errorLogger, 'projectId', settings.projectId)
+            new SubSettingsErrorsLogger(errorLogger, 'targetEntityClass', settings.targetEntityClass)
         )
     ) {
         return false;

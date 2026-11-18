@@ -20,7 +20,7 @@ the plugin.
 npm run dev
 ```
   Vite will start a web server for the project at port 5001, based on the config in `vite.config.ts`. Once the server is started, the plugin can
-  be accessed from these URLs http://localhost:5001/myAccountComponentsManifest.json or http://localhost:5001/myAccountComponents.js
+  be accessed from these URLs http://localhost:5003/bizStackAppExtensionComponentsManifest.json or http://localhost:5003/bizStackAppExtensionComponents.js
 
 ### 2. Configure BizConsole to use the plugin from localhost.
 Add the plugin to the project. [See the instruction here](../README.md#test-the-plugin). Please use one of the plugin URLs mentioned in Step 1.

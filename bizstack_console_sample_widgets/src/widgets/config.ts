@@ -11,7 +11,7 @@ import { XYChartWidget } from './xy-chart-widget/XYChartWidget';
 import { createInitialXYChartWidgetCompSettings, isXYChartWidgetCustomSettings, xyChartWidgetCustomSettingsSchema } from './xy-chart-widget';
 
 /**
- * This is the plugin configuration that is needed by BizConsole. The object name MUST be `bizConsolePlugin` because when BizConsole
+ * This is the plugin configuration that is needed by BizConsole. The object name MUST be `bizConsolePlugins` because when BizConsole
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {

@@ -3,7 +3,7 @@ import sdk from '@moderepo/bizstack-console-sdk/package.json';
 import { MetricSettings, isMetricSettingsProps } from './MetricSettings';
 
 /**
- * This is the plugin configuration that is needed by BizConsole. The object name MUST be `bizConsolePlugin` because when BizConsole
+ * This is the plugin configuration that is needed by BizConsole. The object name MUST be `bizConsolePlugins` because when BizConsole
  * load the plugin, it will be looking for this object.
  */
 export const bizConsolePlugins: BizConsolePluginPack = {
