@@ -12,7 +12,7 @@ export const bizConsolePlugins: BizConsolePluginPack = {
     namespace: 'BizStackAppExtensionConfigCompsPluginSample',
     plugins: [
         {
-            type: BizConsolePluginType.BIZ_STACK_APP_EXTENSION_CONFIG_COMPONENT,
+            type: BizConsolePluginType.BIZSTACK_APP_EXTENSION_CONFIG_COMPONENT,
             name: 'Metric Settings Component',
             componentTypeSettings: {
                 type: MetricSettings.displayName as string,

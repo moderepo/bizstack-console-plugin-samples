@@ -23,7 +23,7 @@
         "zustand": "^4.5.2"
     },
     "devDependencies": {
-        "@moderepo/bizstack-console-sdk": "^1.35.2",
+        "@moderepo/bizstack-console-sdk": "^1.35.3",
         "@module-federation/vite": "^1.9.4",
         "@types/react": "^18.2.66",
         "@types/react-dom": "^18.2.22",
