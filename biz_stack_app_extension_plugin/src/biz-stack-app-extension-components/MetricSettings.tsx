@@ -5,7 +5,6 @@ import {
     Icons,
     isValidObjectValue,
     SubSettingsErrorsLogger,
-    isValidNumberValue,
     StyledPanel,
     StyledForm,
     MetricInput,
