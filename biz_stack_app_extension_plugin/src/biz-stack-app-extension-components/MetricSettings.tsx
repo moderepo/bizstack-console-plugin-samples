@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { useCallback } from 'react';
-import { IconButton, ListItemIcon } from '@mui/material';
+import React, { Fragment, useCallback } from 'react';
+import { Box, IconButton, ListItemIcon } from '@mui/material';
 import {
     Icons,
     isValidObjectValue,
@@ -15,8 +15,14 @@ import {
     BizStackAppExtensionConfigComponentProps,
     isBizStackAppExtensionConfigComponentProps,
     isValidStringValue,
+    EntityInput,
+    Entity,
+    useAuthenticationStore,
+    User,
+    GenericMessageBox,
 } from '@moderepo/bizstack-console-sdk';
 import clsx from 'clsx';
+import * as StyledBizStackAppExtensionPlugin from './styledBizStackAppExtensionPlugin';
 
 export interface MetricSettingsProps extends BizStackAppExtensionConfigComponentProps {
     readonly targetEntityClass?: string;
@@ -52,49 +58,98 @@ export const isMetricSettingsProps = (obj: unknown, errorLogger?: SubSettingsErr
 };
 
 export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onConfigCompleted, targetEntityClass }) => {
+    const loggedInUser = useAuthenticationStore((store) => {
+        return store.loggedInUser;
+    }) as User;
     const [isEditing, setIsEditing] = React.useState<boolean>(false);
     const { menuAnchorElement, menuOpened, onCloseMenu, onMenuAnchorElementClick } = useMenuControlStates(); // States for the ... menu
+    const [selectedEntity, setSelectedEntity] = React.useState<Entity | undefined>(undefined);
     const [selectedMetric, setSelectedMetric] = React.useState<EntityMetricInfo | undefined>(undefined);
     const [previousSelectedMetric, setPreviousSelectedMetric] = React.useState<EntityMetricInfo | undefined>(undefined);
+    const [previousSelectedEntity, setPreviousSelectedEntity] = React.useState<Entity | undefined>(undefined);
 
     const onDoneClick = useCallback(() => {
         setIsEditing(false);
         onConfigCompleted?.();
         setPreviousSelectedMetric(selectedMetric);
-    }, [onConfigCompleted, selectedMetric]);
+        setPreviousSelectedEntity(selectedEntity);
+    }, [onConfigCompleted, selectedMetric, selectedEntity]);
 
     return (
-        <StyledPanel.Panel className={clsx(isEditing && 'editing')}>
-            <StyledPanel.HeaderBar>
-                <StyledPanel.HeaderBarLeftContent>
-                    <StyledPanel.HeaderBarIconContainer>
-                        <Icons.LineGraphOutlined />
-                    </StyledPanel.HeaderBarIconContainer>
-                    <StyledPanel.HeaderBarTitle>Metric Settings</StyledPanel.HeaderBarTitle>
-                </StyledPanel.HeaderBarLeftContent>
-                {!isEditing && (
-                    <StyledPanel.HeaderBarRightContent>
-                        <IconButton onClick={onMenuAnchorElementClick}>
-                            <Icons.KebabMenu />
-                        </IconButton>
-                    </StyledPanel.HeaderBarRightContent>
-                )}
-            </StyledPanel.HeaderBar>
-            <StyledPanel.Content>
-                <MetricInput
-                    variant={isEditing ? 'outlined' : 'standard'}
-                    readOnly={!isEditing}
-                    InputProps={{}}
-                    projectId={projectId}
-                    noValueText={isEditing ? 'Select a metric' : 'None'}
-                    targetEntityClass={targetEntityClass}
-                    allowedMetricType={EntityMetricValueType.NUMBER}
-                    value={selectedMetric}
-                    onChange={setSelectedMetric}
-                />
-            </StyledPanel.Content>
+        <StyledBizStackAppExtensionPlugin.Root className={clsx(isEditing && 'editing')}>
             {isEditing && (
-                <StyledPanel.FooterBar>
+                <StyledBizStackAppExtensionPlugin.ProgressComponent>
+                    <GenericMessageBox
+                        sx={{ padding: `50px 0` }}
+                        title="Progress Component"
+                        message="This is for apps that have many configs and need to show the progress. Not all apps ave to use this."
+                    />
+                </StyledBizStackAppExtensionPlugin.ProgressComponent>
+            )}
+            <StyledPanel.Panel>
+                <StyledPanel.HeaderBar>
+                    <StyledPanel.HeaderBarLeftContent>
+                        <StyledPanel.HeaderBarIconContainer>
+                            <Icons.LineGraphOutlined />
+                        </StyledPanel.HeaderBarIconContainer>
+                        <StyledPanel.HeaderBarTitle>Metric Settings</StyledPanel.HeaderBarTitle>
+                    </StyledPanel.HeaderBarLeftContent>
+                    {!isEditing && (
+                        <StyledPanel.HeaderBarRightContent>
+                            <IconButton onClick={onMenuAnchorElementClick}>
+                                <Icons.KebabMenu />
+                            </IconButton>
+                        </StyledPanel.HeaderBarRightContent>
+                    )}
+                </StyledPanel.HeaderBar>
+                <StyledPanel.Content>
+                    <EntityInput
+                        label="Entity"
+                        variant={isEditing ? 'outlined' : 'standard'}
+                        readOnly={!isEditing}
+                        InputProps={{}}
+                        projectId={projectId}
+                        userId={loggedInUser.id}
+                        noValueText={isEditing ? 'Select an entity' : 'None'}
+                        value={selectedEntity}
+                        onChange={setSelectedEntity}
+                    />
+                    <MetricInput
+                        label="Metric"
+                        variant={isEditing ? 'outlined' : 'standard'}
+                        readOnly={!isEditing}
+                        InputProps={{ disabled: isEditing && !selectedEntity }}
+                        projectId={projectId}
+                        noValueText={isEditing ? 'Select a metric' : 'None'}
+                        targetEntityClass={selectedEntity?.entityClass}
+                        allowedMetricType={EntityMetricValueType.NUMBER}
+                        value={selectedMetric}
+                        onChange={setSelectedMetric}
+                    />
+                </StyledPanel.Content>
+            </StyledPanel.Panel>
+            <StyledPanel.Panel>
+                <StyledPanel.HeaderBar>
+                    <StyledPanel.HeaderBarLeftContent>
+                        <StyledPanel.HeaderBarIconContainer>
+                            <Icons.SettingOutlined />
+                        </StyledPanel.HeaderBarIconContainer>
+                        <StyledPanel.HeaderBarTitle>Other Settings</StyledPanel.HeaderBarTitle>
+                    </StyledPanel.HeaderBarLeftContent>
+                    {!isEditing && (
+                        <StyledPanel.HeaderBarRightContent>
+                            <IconButton onClick={onMenuAnchorElementClick}>
+                                <Icons.KebabMenu />
+                            </IconButton>
+                        </StyledPanel.HeaderBarRightContent>
+                    )}
+                </StyledPanel.HeaderBar>
+                <StyledPanel.Content>
+                    <GenericMessageBox sx={{ margin: `50px 0` }} message="Other App Settings Content" />
+                </StyledPanel.Content>
+            </StyledPanel.Panel>
+            {isEditing && (
+                <StyledBizStackAppExtensionPlugin.FooterBar>
                     <StyledForm.ActionsBar>
                         <StyledForm.RightActionsBar>
                             <StyledForm.ActionButton
@@ -103,6 +158,7 @@ export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onCon
                                 onClick={() => {
                                     setIsEditing(false);
                                     setSelectedMetric(previousSelectedMetric);
+                                    setSelectedEntity(previousSelectedEntity);
                                 }}
                             >
                                 Cancel
@@ -112,9 +168,8 @@ export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onCon
                             </StyledForm.ActionButton>
                         </StyledForm.RightActionsBar>
                     </StyledForm.ActionsBar>
-                </StyledPanel.FooterBar>
+                </StyledBizStackAppExtensionPlugin.FooterBar>
             )}
-
             <StyledDropdownMenu.StyledDropdownMenu open={menuOpened} onClose={onCloseMenu} anchorEl={menuAnchorElement}>
                 <StyledDropdownMenu.StyledDropdownMenuItem
                     onClick={() => {
@@ -125,10 +180,10 @@ export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onCon
                     <ListItemIcon>
                         <Icons.EditOutlined />
                     </ListItemIcon>
-                    Edit Metric
+                    Edit
                 </StyledDropdownMenu.StyledDropdownMenuItem>
             </StyledDropdownMenu.StyledDropdownMenu>
-        </StyledPanel.Panel>
+        </StyledBizStackAppExtensionPlugin.Root>
     );
 };
 MetricSettings.displayName = 'MetricSettings';
