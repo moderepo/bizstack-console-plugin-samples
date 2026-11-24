@@ -66,12 +66,14 @@ export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onCon
     const [selectedEntity, setSelectedEntity] = React.useState<Entity | undefined>(undefined);
     const [selectedMetric, setSelectedMetric] = React.useState<EntityMetricInfo | undefined>(undefined);
     const [previousSelectedMetric, setPreviousSelectedMetric] = React.useState<EntityMetricInfo | undefined>(undefined);
+    const [previousSelectedEntity, setPreviousSelectedEntity] = React.useState<Entity | undefined>(undefined);
 
     const onDoneClick = useCallback(() => {
         setIsEditing(false);
         onConfigCompleted?.();
         setPreviousSelectedMetric(selectedMetric);
-    }, [onConfigCompleted, selectedMetric]);
+        setPreviousSelectedEntity(selectedEntity);
+    }, [onConfigCompleted, selectedMetric, selectedEntity]);
 
     return (
         <StyledBizStackAppExtensionPlugin.Root className={clsx(isEditing && 'editing')}>
@@ -156,6 +158,7 @@ export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onCon
                                 onClick={() => {
                                     setIsEditing(false);
                                     setSelectedMetric(previousSelectedMetric);
+                                    setSelectedEntity(previousSelectedEntity);
                                 }}
                             >
                                 Cancel
