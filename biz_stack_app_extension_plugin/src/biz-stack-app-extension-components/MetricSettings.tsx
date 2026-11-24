@@ -153,8 +153,8 @@ export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onCon
                     <StyledForm.ActionsBar>
                         <StyledForm.RightActionsBar>
                             <StyledForm.ActionButton
-                                variant="text"
-                                color="secondary"
+                                variant="outlined"
+                                color="primary"
                                 onClick={() => {
                                     setIsEditing(false);
                                     setSelectedMetric(previousSelectedMetric);
