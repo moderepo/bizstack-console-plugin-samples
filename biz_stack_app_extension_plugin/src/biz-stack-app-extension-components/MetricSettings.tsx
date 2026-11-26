@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { Fragment, useCallback } from 'react';
+import React, { Fragment, useCallback, useEffect } from 'react';
 import { Box, IconButton, ListItemIcon } from '@mui/material';
 import {
     Icons,
@@ -57,7 +57,7 @@ export const isMetricSettingsProps = (obj: unknown, errorLogger?: SubSettingsErr
     return true;
 };
 
-export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onConfigCompleted, targetEntityClass }) => {
+export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onConfigCompleted, appProxyAPI }) => {
     const loggedInUser = useAuthenticationStore((store) => {
         return store.loggedInUser;
     }) as User;
@@ -74,6 +74,12 @@ export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onCon
         setPreviousSelectedMetric(selectedMetric);
         setPreviousSelectedEntity(selectedEntity);
     }, [onConfigCompleted, selectedMetric, selectedEntity]);
+
+    useEffect(() => {
+        appProxyAPI.get('some/path').then((response) => {
+            console.log('response', response);
+        });
+    }, [isEditing, previousSelectedMetric, previousSelectedEntity, appProxyAPI]);
 
     return (
         <StyledBizStackAppExtensionPlugin.Root className={clsx(isEditing && 'editing')}>
