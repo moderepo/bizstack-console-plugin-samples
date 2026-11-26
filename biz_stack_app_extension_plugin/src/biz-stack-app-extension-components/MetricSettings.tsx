@@ -57,7 +57,7 @@ export const isMetricSettingsProps = (obj: unknown, errorLogger?: SubSettingsErr
     return true;
 };
 
-export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onConfigCompleted, appProxyAPI }) => {
+export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onConfigCompleted, appProxyAPIs }) => {
     const loggedInUser = useAuthenticationStore((store) => {
         return store.loggedInUser;
     }) as User;
@@ -76,10 +76,10 @@ export const MetricSettings: React.FC<MetricSettingsProps> = ({ projectId, onCon
     }, [onConfigCompleted, selectedMetric, selectedEntity]);
 
     useEffect(() => {
-        appProxyAPI.get('some/path').then((response) => {
+        appProxyAPIs.get('/some/path').then((response) => {
             console.log('response', response);
         });
-    }, [isEditing, previousSelectedMetric, previousSelectedEntity, appProxyAPI]);
+    }, [isEditing, previousSelectedMetric, previousSelectedEntity, appProxyAPIs]);
 
     return (
         <StyledBizStackAppExtensionPlugin.Root className={clsx(isEditing && 'editing')}>
